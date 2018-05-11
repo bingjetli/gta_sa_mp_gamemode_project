@@ -1,0 +1,18 @@
+login: mysql
+login and changepassword
+
+autologin
+
+crashall ragequit 
+
+custom clock timezone based on (gmt variable)ip address using server time day night in-game sync
+
+mysql system
+
+custom healthbar
+
+custom damage
+
+forget password\recovery during login screen
+
+global money management(economy)
