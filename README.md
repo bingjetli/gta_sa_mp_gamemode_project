@@ -1,0 +1,11 @@
+# checklist
+- mysql login/register
+- recover account
+- auto login
+- custom damage/healthbar
+- custom timezone
+- car spawns
+- custom interior enter/exits
+- robbery
+- civilian classes
+- cop classes
