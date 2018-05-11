@@ -2,6 +2,9 @@
 #include <core>
 #include <float>
 
+//this is where you includae your modules
+#include "./testModule.pwn"
+
 #pragma tabsize 0
 
 main()
@@ -13,6 +16,7 @@ main()
 
 public OnPlayerConnect(playerid)
 {
+	testModule_OnPlayerConnect(playerid);       //here's how we hook callbacks to be used in your module
 	GameTextForPlayer(playerid,"~w~SA-MP: ~r~Bare Script",5000,5);
 	return 1;
 }
