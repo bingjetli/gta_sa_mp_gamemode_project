@@ -9,30 +9,13 @@
 
 main()
 {
-	print("\n----------------------------------");
-	print("  Bare Script\n");
-	print("----------------------------------\n");
+	print("gamemode initialized");
 }
 
 public OnPlayerConnect(playerid)
 {
 	testModule_OnPlayerConnect(playerid);       //here's how we hook callbacks to be used in your module
-	GameTextForPlayer(playerid,"~w~SA-MP: ~r~Bare Script",5000,5);
 	return 1;
-}
-
-public OnPlayerCommandText(playerid, cmdtext[])
-{
-	new idx;
-	new cmd[256];
-	
-	cmd = strtok(cmdtext, idx);
-
-	if(strcmp(cmd, "/yadayada", true) == 0) {
-    	return 1;
-	}
-
-	return 0;
 }
 
 public OnPlayerSpawn(playerid)
@@ -64,7 +47,7 @@ public OnPlayerRequestClass(playerid, classid)
 
 public OnGameModeInit()
 {
-	SetGameModeText("Bare Script");
+	SetGameModeText("sfrpg");
 	ShowPlayerMarkers(1);
 	ShowNameTags(1);
 	AllowAdminTeleport(1);
@@ -72,23 +55,4 @@ public OnGameModeInit()
 	AddPlayerClass(265,1958.3783,1343.1572,15.3746,270.1425,0,0,0,0,-1,-1);
 
 	return 1;
-}
-
-strtok(const string[], &index)
-{
-	new length = strlen(string);
-	while ((index < length) && (string[index] <= ' '))
-	{
-		index++;
-	}
-
-	new offset = index;
-	new result[20];
-	while ((index < length) && (string[index] > ' ') && ((index - offset) < (sizeof(result) - 1)))
-	{
-		result[index - offset] = string[index];
-		index++;
-	}
-	result[index - offset] = EOS;
-	return result;
 }
