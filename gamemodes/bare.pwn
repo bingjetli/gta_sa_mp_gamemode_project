@@ -6,6 +6,7 @@
 #include <core>
 #include <float>
 #include <Pawn.CMD>
+#include <sscanf2>
 
 //this is where you includae your modules
 #include "./testModule.pwn"
