@@ -23,9 +23,9 @@
 */
 
 stock buildings_OnPlayerConnect(playerid){
-	new string[3];
+	new string[32];
 	for(new i; i < 10; i++){
-		format(string, sizeof(string), "%i", CreatePickup(1242, 1, 0.0, 0.0, 0.0, -1));
+		format(string, sizeof(string), "%x", CreatePickup(1242, 1, 0.0, 0.0, 0.0, -1));
 		SendClientMessage(playerid, 0xffffffff, string);
 	}
 	SendClientMessage(playerid, 0xffffffff, "Sucessfully hooked on player connect!");
