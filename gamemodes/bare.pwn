@@ -18,7 +18,9 @@
 #include "./accountsSystem.pwn"
 
 
-main(); //dont delete
+main(){
+	print("sfrpg loaded...");
+}
 
 public OnPlayerConnect(playerid){
 	testModule_OnPlayerConnect(playerid);       //here's how we hook callbacks to be used in your module

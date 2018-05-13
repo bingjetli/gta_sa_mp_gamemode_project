@@ -27,6 +27,33 @@
  * 	caching all possible pickupids to link to buildings array
  * 	size 4096 (max pickups)
 */
+#define MAX_BUILDINGS 100
+#define MAX_CACHED_PICKUPS 4096
+
+enum ENUM_BUILDINGS_DATA {
+	Float:ENTRY_PICKUP_X,
+	Float:ENTRY_PICKUP_Y,
+	Float:ENTRY_PICKUP_Z,
+	Float:ENTRY_TARGET_X,
+	Float:ENTRY_TARGET_Y,
+	Float:ENTRY_TARGET_Z,
+	Float:ENTRY_TARGET_FACING_ANGLE,
+	ENTRY_TARGET_INTERIOR_ID,
+	Float:EXIT_PICKUP_X,
+	Float:EXIT_PICKUP_Y,
+	Float:EXIT_PICKUP_Z,
+	Float:EXIT_TARGET_X,
+	Float:EXIT_TARGET_Y,
+	Float:EXIT_TARGET_Z,
+	Float:EXIT_TARGET_FACING_ANGLE,
+	EXIT_TARGET_INTERIOR_ID
+};
+
+static const buildings_data[][ENUM_BUILDINGS_DATA] = {
+	{0.0, 0.0, 0.0, 0.9, 0.9, 0.9, 0.9, 11, 1.1, 1.1, 1.1, 0.1, 0.1, 0.1, 0.1, 0}
+};
+
+static buildings_cached_pickups[MAX_CACHED_PICKUPS];
 
 stock buildings_OnPlayerConnect(playerid){
 	SendClientMessage(playerid, 0xffffffff, "Sucessfully hooked on player connect!");
