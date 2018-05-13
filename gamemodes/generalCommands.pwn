@@ -13,12 +13,12 @@ cmd:tp(playerid, params[]){
 	return 1;
 }
 
-alias:bigdick("dickbig", "biggus", "dickus");
+//alias:bigdick("dickbig", "biggus", "dickus");
 
-cmd:weapons(playerid, params[]){
+//cmd:weapons(playerid, params[]){
     //Dialog_Show(playerid, WeaponMenu, DIALOG_STYLE_LIST, "Weapon Menu", "9mm\nSilenced 9mm\nDesert Eagle\nShotgun\nSawn-off Shotgun\nCombat Shotgun", "Select", "Cancel");
-    return 1;
-}
+//    return 1;
+//}
 
 //command permissions
 //https://github.com/urShadow/Pawn.CMD
