@@ -49,11 +49,11 @@ enum ENUM_BUILDINGS_DATA {
 	EXIT_TARGET_INTERIOR_ID
 };
 
-static const buildings_data[][ENUM_BUILDINGS_DATA] = {
+stock static const buildings_data[][ENUM_BUILDINGS_DATA] = {
 	{0.0, 0.0, 0.0, 0.9, 0.9, 0.9, 0.9, 11, 1.1, 1.1, 1.1, 0.1, 0.1, 0.1, 0.1, 0}
 };
 
-static buildings_cached_pickups[MAX_CACHED_PICKUPS];
+stock static buildings_cached_pickups[MAX_CACHED_PICKUPS];
 
 stock buildings_OnPlayerConnect(playerid){
 	SendClientMessage(playerid, 0xffffffff, "Sucessfully hooked on player connect!");
