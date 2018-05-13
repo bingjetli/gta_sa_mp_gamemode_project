@@ -12,6 +12,7 @@ cmd:tp(playerid, params[]){
 	SetPlayerPos(1, x,y,z+2);
 	return 1;
 }
+
 alias:bigdick("dickbig", "biggus", "dickus");
 
 cmd:weapons(playerid, params[]){
