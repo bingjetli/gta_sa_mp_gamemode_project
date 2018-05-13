@@ -25,6 +25,8 @@ public OnPlayerConnect(playerid){
 }
 
 public OnPlayerSpawn(playerid){
+	SetPlayerPos(playerid, -1753.7196, 884.7693, 295.8750);
+	SetPlayerFacingAngle(playerid, 6.6817);
 	SetCameraBehindPlayer(playerid);
 	GivePlayerWeapon(playerid, 46, 1);
 	return 1;
