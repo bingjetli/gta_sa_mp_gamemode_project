@@ -7,7 +7,7 @@
 #include <float>//this too?
 #include <Pawn.CMD>
 #include <sscanf2>
-#include <a_mysql>
+//#include <a_mysql>//breaks game??
 #include <easyDialog>
 
 //this is where you includae your modules
@@ -16,7 +16,7 @@
 #include "./pdataArray.pwn"
 #include "./generalCommands.pwn"
 #include "./mysqlCore.pwn"
-#include "./dialogs.pwn"
+//#include "./dialogs.pwn" breaks game??
 
 main(){
 	print("gamemode initialized");
