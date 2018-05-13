@@ -24,7 +24,7 @@
 
 stock buildings_OnPlayerConnect(playerid){
 	new string[3];
-	for(new i; i < 100; i++){
+	for(new i; i < 10; i++){
 		format(string, sizeof(string), "%i", CreatePickup(1242, 8, 0.0, 0.0, 0.0, -1));
 		SendClientMessage(playerid, 0xffffffff, string);
 	}
