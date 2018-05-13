@@ -6,7 +6,7 @@
 #include <core>  //unnecessary??
 #include <float>//this too?
 #include <Pawn.CMD>
-#include <sscanf2>
+//#include <sscanf2>
 //#include <a_mysql>
 //#include <easyDialog>
 
