@@ -7,13 +7,13 @@
 #include <float>//this too?
 #include <Pawn.CMD>
 #include <sscanf2>
-#include <a_mysql>
+//#include <a_mysql>
 //#include <easyDialog>
 
 //this is where you includae your modules
 #include "./testModule.pwn"
 #include "./buildings.pwn"
-#include "./pdataArray.pwn"
+//#include "./pdataArray.pwn"
 #include "./generalCommands.pwn"
 #include "./mysqlCore.pwn"
 //#include "./dialogs.pwn"
