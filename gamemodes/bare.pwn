@@ -4,6 +4,7 @@
 
 //this is where you includae your modules
 #include "./testModule.pwn"
+#include "./buildings.pwn"
 
 #pragma tabsize 0
 
@@ -15,6 +16,7 @@ main()
 public OnPlayerConnect(playerid)
 {
 	testModule_OnPlayerConnect(playerid);       //here's how we hook callbacks to be used in your module
+	buildings_OnPlayerConnect(playerid);
 	return 1;
 }
 
