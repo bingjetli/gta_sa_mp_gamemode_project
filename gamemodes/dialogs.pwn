@@ -10,7 +10,7 @@ Dialog:WeaponMenu(playerid, response, listitem, inputtext[])
     }
     return 1;
 }
- /* fastdialogs breaks the fking game
+
 public OnDialogPerformed(playerid, dialog[], response, success)
 {
     if (!strcmp(dialog, "WeaponMenu") && IsPlayerInAnyVehicle(playerid))
@@ -19,7 +19,7 @@ public OnDialogPerformed(playerid, dialog[], response, success)
         return 0;
     }
     return 1;
-}*/
+}
 
 
 /*for more on dialog processor:
