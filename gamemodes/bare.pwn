@@ -25,8 +25,8 @@ public OnPlayerConnect(playerid){
 }
 
 public OnPlayerSpawn(playerid){
-	SetPlayerInterior(playerid,0);
-	TogglePlayerClock(playerid,0);
+	SetCameraBehindPlayer(playerid);
+	GivePlayerWeapon(playerid, 46, 1);
 	return 1;
 }
 
@@ -35,11 +35,12 @@ public OnPlayerDeath(playerid, killerid, reason){
 }
 
 SetupPlayerForClassSelection(playerid){
- 	SetPlayerInterior(playerid,14);
-	SetPlayerPos(playerid,258.4893,-41.4008,1002.0234);
-	SetPlayerFacingAngle(playerid, 270.0);
-	SetPlayerCameraPos(playerid,256.0815,-43.0475,1004.0234);
-	SetPlayerCameraLookAt(playerid,258.4893,-41.4008,1002.0234);
+	SetPlayerPos(playerid, -1753.7196, 884.7693, 295.8750);
+	SetPlayerFacingAngle(playerid, 6.6817);
+	SetPlayerCameraPos(playerid, -1754.3840, 890.7601, 296.6267);
+	SetPlayerCameraLookAt(playerid, -1753.7196, 884.7693, 295.8750);
+	SetPlayerTime(playerid, 0, 0);
+	SetPlayerWeather(playerid, 3);
 }
 
 public OnPlayerRequestClass(playerid, classid){
