@@ -17,9 +17,7 @@
 #include "./accountsSystem.pwn"
 
 
-main(){
-	print("sfrpg loaded...");
-}
+main();
 
 public OnPlayerConnect(playerid){
 	buildings_OnPlayerConnect(playerid);
