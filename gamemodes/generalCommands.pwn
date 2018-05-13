@@ -13,7 +13,7 @@ cmd:tp(playerid, params[]){
 	return 1;
 }
 
-alias:bigdick("dickbig", "biggus", "dickus");
+//alias:bigdick("dickbig", "biggus", "dickus");
 
 /*
 cmd:weapons(playerid, params[]){
