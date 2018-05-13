@@ -8,7 +8,7 @@
 #include <Pawn.CMD>
 #include <sscanf2>
 //#include <a_mysql>//breaks game??
-#include <easyDialog>
+#include <easyDialog>//breaks game??
 
 //this is where you includae your modules
 #include "./testModule.pwn"
@@ -16,7 +16,7 @@
 #include "./pdataArray.pwn"
 #include "./generalCommands.pwn"
 #include "./mysqlCore.pwn"
-//#include "./dialogs.pwn" breaks game??
+#include "./dialogs.pwn"
 
 main(){
 	print("gamemode initialized");
