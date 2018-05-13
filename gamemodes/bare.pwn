@@ -6,9 +6,9 @@
 #include <core>  //unnecessary??
 #include <float>//this too?
 #include <Pawn.CMD>
-//#include <sscanf2>
-//#include <a_mysql>
-//#include <easyDialog>
+#include <sscanf2>
+#include <a_mysql>
+#include <easyDialog>
 
 //this is where you includae your modules
 #include "./testModule.pwn"
@@ -16,7 +16,7 @@
 //#include "./pdataArray.pwn"
 #include "./generalCommands.pwn"
 #include "./mysqlCore.pwn"
-//#include "./dialogs.pwn"
+#include "./dialogs.pwn"
 
 //dont delete
 main();

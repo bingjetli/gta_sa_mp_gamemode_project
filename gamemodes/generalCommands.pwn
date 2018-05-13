@@ -2,7 +2,7 @@ cmd:bigdick(playerid, params[]){
 	SendClientMessageToAll(0xFFFFFF,"bigdick");
     return 1;
 }
-/*
+
 cmd:tp(playerid, params[]){
 	new Float:x, Float:y, Float:z;
 	if(playerid == 0){
@@ -12,15 +12,15 @@ cmd:tp(playerid, params[]){
 	GetPlayerPos(0, x, y, z);
 	SetPlayerPos(1, x,y,z+2);
 	return 1;
-}*/
+}
 
-//alias:bigdick("dickbig", "biggus", "dickus");
+alias:bigdick("dickbig", "biggus", "dickus");
 
-/*
+
 cmd:weapons(playerid, params[]){
     Dialog_Show(playerid, WeaponMenu, DIALOG_STYLE_LIST, "Weapon Menu", "9mm\nSilenced 9mm\nDesert Eagle\nShotgun\nSawn-off Shotgun\nCombat Shotgun", "Select", "Cancel");
     return 1;
-}*/
+}
 
 //command permissions
 //https://github.com/urShadow/Pawn.CMD
