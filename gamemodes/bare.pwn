@@ -52,6 +52,7 @@ public OnPlayerRequestClass(playerid, classid){
 }
 
 public OnGameModeInit(){
+    UsePlayerPedAnims();
 	SetGameModeText("sfrpg");
 	ShowPlayerMarkers(1);
 	ShowNameTags(1);
