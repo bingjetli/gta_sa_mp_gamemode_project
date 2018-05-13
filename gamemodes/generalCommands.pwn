@@ -16,7 +16,7 @@ cmd:tp(playerid, params[]){
 alias:bigdick("dickbig", "biggus", "dickus");
 
 cmd:weapons(playerid, params[]){
-    Dialog_Show(playerid, WeaponMenu, DIALOG_STYLE_LIST, "Weapon Menu", "9mm\nSilenced 9mm\nDesert Eagle\nShotgun\nSawn-off Shotgun\nCombat Shotgun", "Select", "Cancel");
+    //Dialog_Show(playerid, WeaponMenu, DIALOG_STYLE_LIST, "Weapon Menu", "9mm\nSilenced 9mm\nDesert Eagle\nShotgun\nSawn-off Shotgun\nCombat Shotgun", "Select", "Cancel");
     return 1;
 }
 
