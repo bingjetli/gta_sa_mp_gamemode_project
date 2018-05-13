@@ -11,6 +11,7 @@
 #include "./testModule.pwn"
 #include "./buildings.pwn"
 #include "./pdataArray.pwn"
+#include "./commands.pwn"
 
 main()
 {
