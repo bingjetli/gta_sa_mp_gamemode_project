@@ -3,8 +3,6 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS 50
 
-#include <core>  //unnecessary??
-#include <float>//this too?
 #include <Pawn.CMD>
 #include <sscanf2>
 #include <a_mysql>
