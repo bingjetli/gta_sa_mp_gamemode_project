@@ -5,11 +5,12 @@
 
 #include <core>
 #include <float>
+#include <Pawn.CMD>
 
 //this is where you includae your modules
 #include "./testModule.pwn"
 #include "./buildings.pwn"
-#include "./playerDataArray.pwn"
+#include "./pdataArray.pwn"
 
 main()
 {
