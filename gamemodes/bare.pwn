@@ -66,3 +66,5 @@ public OnGameModeExit(){
 	SendClientMessageToAll(0xFFFFFF, "server calls exit before being killed");
 	return 1; //return 0 to prevent filterscripts from receiving the callback
 }
+
+
