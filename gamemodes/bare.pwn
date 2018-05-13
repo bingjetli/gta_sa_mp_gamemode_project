@@ -3,43 +3,42 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS 50
 
-#include <core>
-#include <float>
+#include <core>  //unnecessary??
+#include <float>//this too?
 #include <Pawn.CMD>
 #include <sscanf2>
+#include <a_mysql>
+#include <easyDialog>
 
 //this is where you includae your modules
 #include "./testModule.pwn"
 #include "./buildings.pwn"
 #include "./pdataArray.pwn"
-#include "./commands.pwn"
+#include "./generalCommands.pwn"
+#include "./mysqlCore.pwn"
+#include "./dialogs.pwn"
 
-main()
-{
+main(){
 	print("gamemode initialized");
 }
 
-public OnPlayerConnect(playerid)
-{
+public OnPlayerConnect(playerid){
 	testModule_OnPlayerConnect(playerid);       //here's how we hook callbacks to be used in your module
 	buildings_OnPlayerConnect(playerid);
 	return 1;
 }
 
-public OnPlayerSpawn(playerid)
-{
+public OnPlayerSpawn(playerid){
 	SetPlayerInterior(playerid,0);
 	TogglePlayerClock(playerid,0);
 	return 1;
 }
 
-public OnPlayerDeath(playerid, killerid, reason)
-{
+public OnPlayerDeath(playerid, killerid, reason){
    	return 1;
 }
 
-SetupPlayerForClassSelection(playerid)
-{
+SetupPlayerForClassSelection(playerid){
  	SetPlayerInterior(playerid,14);
 	SetPlayerPos(playerid,258.4893,-41.4008,1002.0234);
 	SetPlayerFacingAngle(playerid, 270.0);
@@ -47,14 +46,12 @@ SetupPlayerForClassSelection(playerid)
 	SetPlayerCameraLookAt(playerid,258.4893,-41.4008,1002.0234);
 }
 
-public OnPlayerRequestClass(playerid, classid)
-{
+public OnPlayerRequestClass(playerid, classid){
 	SetupPlayerForClassSelection(playerid);
 	return 1;
 }
 
-public OnGameModeInit()
-{
+public OnGameModeInit(){
 	SetGameModeText("sfrpg");
 	ShowPlayerMarkers(1);
 	ShowNameTags(1);
