@@ -16,7 +16,7 @@
 #include "./pdataArray.pwn"
 //#include "./generalCommands.pwn"
 #include "./mysqlCore.pwn"
-//#include "./dialogs.pwn"
+#include "./dialogs.pwn"
 
 main(){
 	print("gamemode initialized");
