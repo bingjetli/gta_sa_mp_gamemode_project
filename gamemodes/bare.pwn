@@ -17,9 +17,10 @@
 #include "./generalCommands.pwn"
 #include "./mysqlCore.pwn"
 #include "./dialogs.pwn"
+#include "./accountsSystem.pwn"
 
-//dont delete
-main();
+
+main(); //dont delete
 
 public OnPlayerConnect(playerid){
 	testModule_OnPlayerConnect(playerid);       //here's how we hook callbacks to be used in your module
@@ -62,6 +63,7 @@ public OnGameModeInit(){
 }
 
 public OnGameModeExit(){
+	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
 	SendClientMessageToAll(0xFFFFFF, "server calls exit before being killed");
 	return 1; //return 0 to prevent filterscripts from receiving the callback
 }
