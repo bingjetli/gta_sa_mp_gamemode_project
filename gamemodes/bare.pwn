@@ -1,12 +1,15 @@
 #include <a_samp>
+
+#undef MAX_PLAYERS
+#define MAX_PLAYERS 50
+
 #include <core>
 #include <float>
 
 //this is where you includae your modules
 #include "./testModule.pwn"
 #include "./buildings.pwn"
-
-#pragma tabsize 0
+#include "./playerDataArray.pwn"
 
 main()
 {
