@@ -18,9 +18,8 @@
 #include "./mysqlCore.pwn"
 #include "./dialogs.pwn"
 
-main(){
-	print("gamemode initialized");
-}
+//dont delete
+main();
 
 public OnPlayerConnect(playerid){
 	testModule_OnPlayerConnect(playerid);       //here's how we hook callbacks to be used in your module
