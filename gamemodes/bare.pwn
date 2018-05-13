@@ -8,7 +8,7 @@
 #include <Pawn.CMD>
 #include <sscanf2>
 #include <a_mysql>
-#include <easyDialog>
+//#include <easyDialog>
 
 //this is where you includae your modules
 #include "./testModule.pwn"
