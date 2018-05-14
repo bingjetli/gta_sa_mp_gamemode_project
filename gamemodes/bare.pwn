@@ -9,6 +9,7 @@
 #include <easyDialog>
 
 //this is where you includae your modules
+#include "./mapicons.pwn"
 #include "./buildings.pwn"
 //#include "./pdataArray.pwn"
 #include "./generalCommands.pwn"
@@ -20,6 +21,7 @@
 main();
 
 public OnPlayerConnect(playerid){
+	mapIcons_OnPlayerConnect(playerid);
 	buildings_OnPlayerConnect(playerid);
 	return 1;
 }
