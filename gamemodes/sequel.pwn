@@ -28,6 +28,51 @@ sequel_Exit(){
 }
 
 
+sequel_QueryPlayerData(playerid){ //query time & login time - login time is time it take pawn to process (ms)
+	new query[200];
+	pdata[playerid][loggedin]=false;
+	pdata[playerid][pwfails]=0;
+	
+	GetPlayerName(playerid, pdata[playerid][name], MAX_PLAYER_NAME); // Getting the player's name.
+	pdata[playerid][corrupt_check]++;
+
+	mysql_format(database, query, sizeof(query), "SELECT * FROM `pdata` WHERE `name` = '%e' LIMIT 1", pdata[playerid][name]);
+	mysql_tquery(database, query, "OnPlayerDataCheck", "ii", playerid, pdata[playerid][corrupt_check]);
+	return 1;
+}
+
+forward OnPlayerDataCheck(playerid, corrupt_checker);
+public OnPlayerDataCheck(playerid, corrupt_checker){
+
+    if (corrupt_checker != pdata[playerid][corrupt_check]) return print("================>>>>id corrupt");
+    
+	new String[150];
+
+	if(cache_num_rows() > 0){
+		cache_get_value(0, "pwhash", pdata[playerid][pwhash], 65);
+		cache_get_value(0, "pwsalt", pdata[playerid][pwsalt], 11);
+		
+		pdata[playerid][player_cache] = cache_save();
+
+		format(String, sizeof(String), "{FFFFFF}Welcome back, %s.\n\n{0099FF}This name is already registered.\n\
+		{0099FF}Please login below, or proceed with a different name.\n\n", pdata[playerid][name]);
+		Dialog_Show(playerid, login_dialog, DIALOG_STYLE_PASSWORD, "Login System", String, "Login", "Change Name");
+	}
+	else {
+		format(String, sizeof(String), "{FFFFFF}Welcome %s.\n\n{0099FF}This account is not registered.\n\
+		{0099FF}Please input a password to register, or play as a guest.\n\n", pdata[playerid][name]);
+		Dialog_Show(playerid, register_dialog, DIALOG_STYLE_PASSWORD, "Registration System", String, "Register", "Guest");
+	}
+	return 1;
+}
+
+forward OnPlayerRegister(playerid);
+public OnPlayerRegister(playerid){
+	SendClientMessage(playerid, 0x00FF00FF, "You are now registered and has been logged in.");
+    pdata[playerid][loggedin] = true;
+    return 1;
+}
+
 
 
 /* Current working query

@@ -1,10 +1,12 @@
 cmd:bigdick(playerid, params[]){
+	testvar=69;
 	SendClientMessageToAll(0xFFFFFF,"bigdick");
     return 1;
 }
 
 cmd:tp(playerid, params[]){
 	new Float:x, Float:y, Float:z;
+
 	if(playerid == 0){
         GetPlayerPos(1, x, y, z);
 		SetPlayerPos(0, x,y,z+2);
@@ -17,7 +19,7 @@ alias:bigdick("dickbig", "biggus", "dickus"); //as many as you want
 
 
 cmd:weapons(playerid, params[]){
-    Dialog_Show(playerid, WeaponMenu, DIALOG_STYLE_LIST, "Weapon Menu", "9mm\nSilenced 9mm\nDesert Eagle\nShotgun\nSawn-off Shotgun\nCombat Shotgun", "Select", "Cancel");
+    Dialog_Show(playerid, weaponsmenu, DIALOG_STYLE_LIST, "Weapon Menu", "9mm\nSilenced 9mm\nDesert Eagle\nShotgun\nSawn-off Shotgun\nCombat Shotgun", "Select", "Cancel");
     return 1;
 }
 

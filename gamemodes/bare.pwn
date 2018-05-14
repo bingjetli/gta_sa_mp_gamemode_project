@@ -8,21 +8,54 @@
 #include <a_mysql>
 #include <easyDialog>
 #include <foreach>
+#include <fixes2>
+
+enum player_data_enum {
+	db_id,                      //db
+	name[25],                   //db
+	pwhash[65],                 //db
+	pwsalt[11],                 //db
+	pwfails,
+	kills,                      //db
+	deaths,                     //db
+	bool:loggedin,
+	bool:shadowbanned,          //db
+	cash,                       //db
+	bankmoney,                  //db
+	health,                     //db
+	armor,                      //db
+	timezone,                   //db
+	ip[16],                     //db
+	autologin,                  //db
+	adminlevel,                 //db
+	corrupt_check,
+	Cache:player_cache
+};
+
+new pdata[MAX_PLAYERS][player_data_enum];
+new testvar;
+new strr[10];
+
+
+
 
 //this is where you includae your modules
 #include "./mapIcons.pwn"
 #include "./buildings.pwn"
-#include "./pdataArray.pwn"
 #include "./commands.pwn"
 #include "./sequel.pwn"
 #include "./dialogs.pwn"
-#include "./accounts.pwn"
+
+
+
 
 
 main();
 
 public OnPlayerConnect(playerid){
-	accounts_QueryPlayerData(playerid);
+    valstr(strr,testvar);
+	SendClientMessageToAll(-1,strr);
+	sequel_QueryPlayerData(playerid);
 	mapIcons_OnPlayerConnect(playerid);
 	buildings_OnPlayerConnect(playerid);
 	return 1;
@@ -64,7 +97,6 @@ public OnGameModeInit(){
     UsePlayerPedAnims();
 	SetGameModeText("sfrpg");
 	ShowPlayerMarkers(1);
-	buildings_OnGameModeInit();
 
 	AddPlayerClass(265,1958.3783,1343.1572,15.3746,270.1425,0,0,0,0,-1,-1);
 

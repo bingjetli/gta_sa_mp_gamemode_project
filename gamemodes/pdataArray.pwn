@@ -1,24 +1,23 @@
 enum player_data_enum {
-	db_id,
-	name[25],
-	pwhash[65],
-	pwsalt[11],
+	db_id,                      //db
+	name[25],                   //db
+	pwhash[65],                 //db
+	pwsalt[11],                 //db
 	pwfails,
-	kills,
-	deaths,
+	kills,                      //db
+	deaths,                     //db
 	bool:loggedin,
-	bool:registered,
-	bool:shadowbanned,
-	cash,
-	bankmoney,
-	health,
-	armor,
-	timezone,
-	ip[16],
-	autologin,
-	adminlevel,
+	bool:shadowbanned,          //db
+	cash,                       //db
+	bankmoney,                  //db
+	health,                     //db
+	armor,                      //db
+	timezone,                   //db
+	ip[16],                     //db
+	autologin,                  //db
+	adminlevel,                 //db
 	corrupt_check,
-	cache:sequel_caches
+	Cache:player_cache
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];
