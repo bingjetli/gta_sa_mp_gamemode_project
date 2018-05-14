@@ -176,7 +176,7 @@ stock static const buildings_data[][ENUM_BUILDINGS_DATA] = {
 };
 
 stock static buildings_cached_pickups[MAX_CACHED_PICKUPS];
-stock static buildings_player_enex_cooldowns[MAX_PLAYERS];
+stock static bool:buildings_player_enex_cooldowns[MAX_PLAYERS];
 
 forward buildings_SetPlayerEnExCooldown(playerid);
 
@@ -208,17 +208,19 @@ stock buildings_OnPlayerConnect(playerid){
 }
 
 stock buildings_OnPlayerPickUpPickup(playerid, pickupid){
-	/*
-	 * due to the way enex markers are/will be scripted, players will be teleported immediately upon picking up the enex pickup
-	 * buildings_player_enex_cooldowns is then used to store whether or not a player can be teleported again when inside an enex marker
-	 * this prevents cases where a player will be continuously teleported while inside an enex marker
-	*/
-	buildings_player_enex_cooldowns[playerid] = true;
-	SetTimerEx("buildings_SetPlayerEnExCooldown", ENEX_TELEPORT_COOLDOWN, false, "d", playerid);
+	if(buildings_player_enex_cooldowns[playerid] == false){
+		/*
+		 * due to the way enex markers are/will be scripted, players will be teleported immediately upon picking up the enex pickup
+		 * buildings_player_enex_cooldowns is then used to store whether or not a player can be teleported again when inside an enex marker
+		 * this prevents cases where a player will be continuously teleported while inside an enex marker
+		*/
+		buildings_player_enex_cooldowns[playerid] = true;
+		SetTimerEx("buildings_SetPlayerEnExCooldown", ENEX_TELEPORT_COOLDOWN, false, "d", playerid);
 
-	SetPlayerPos(playerid, buildings_gta_enex[buildings_cached_pickups[pickupid]][X2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Y2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Z2] + buildings_gta_enex[buildings_cached_pickups[pickupid]][I2]);
-	SetPlayerFacingAngle(playerid, buildings_gta_enex[buildings_cached_pickups[pickupid]][ROT2]);
-	SetCameraBehindPlayer(playerid);
+		SetPlayerPos(playerid, buildings_gta_enex[buildings_cached_pickups[pickupid]][X2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Y2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Z2] + 1.5);
+		SetPlayerFacingAngle(playerid, buildings_gta_enex[buildings_cached_pickups[pickupid]][ROT2]);
+		SetCameraBehindPlayer(playerid);
+	}
 	return 1;
 }
 
