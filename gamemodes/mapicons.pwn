@@ -126,7 +126,9 @@ static const Coords[][Chars] = {
 stock mapIcons_OnPlayerConnect(playerid)
 {
         for(new i; i<sizeof(Coords); i++){
-		SetPlayerMapIcon(playerid, i, Coords[i][X], Coords[i][Y], Coords[i][Z], Coords[i][ID], 0, MAPICON_GLOBAL);
+		if(Coords[i][Y] > -800.0 && Coords[i][X] < -1080.0 && Coords[i][Y] < 1600.0 && Coords[i][X] > 2950.0){
+			SetPlayerMapIcon(playerid, i, Coords[i][X], Coords[i][Y], Coords[i][Z], Coords[i][ID], 0, MAPICON_GLOBAL);
+		}
 	}
         return 1;
 }
