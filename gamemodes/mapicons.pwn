@@ -21,7 +21,7 @@ enum Chars
         Float:Z
 }
 
-static const Coords[][Chars] = {
+stock static const Coords[][Chars] = {
  
 #if defined mapIcons_PAY_SPRAY
         {63,2067.4,-1831.2,13.5},
@@ -125,10 +125,13 @@ static const Coords[][Chars] = {
 
 stock mapIcons_OnPlayerConnect(playerid)
 {
+	SendClientMessage(playerid, 0xffffffff, "Default Map Icons Disabled");
+/*
         for(new i; i<sizeof(Coords); i++){
 		if(Coords[i][Y] > -800.0 && Coords[i][X] < -1080.0 && Coords[i][Y] < 1600.0 && Coords[i][X] > -2950.0){
-			//SetPlayerMapIcon(playerid, i, Coords[i][X], Coords[i][Y], Coords[i][Z], Coords[i][ID], 0, MAPICON_GLOBAL);
+			SetPlayerMapIcon(playerid, i, Coords[i][X], Coords[i][Y], Coords[i][Z], Coords[i][ID], 0, MAPICON_GLOBAL);
 		}
 	}
         return 1;
+*/
 }
