@@ -27,6 +27,11 @@ public OnPlayerConnect(playerid){
 	return 1;
 }
 
+public OnPlayerDisconnect(playerid, reason){
+
+	return 1;
+}
+
 public OnPlayerSpawn(playerid){
 	SetPlayerPos(playerid, -1753.7196, 884.7693, 295.8750);
 	SetPlayerFacingAngle(playerid, 6.6817);
@@ -54,6 +59,7 @@ public OnPlayerRequestClass(playerid, classid){
 }
 
 public OnGameModeInit(){
+	if(!MySQLInit()) return 1;
     UsePlayerPedAnims();
 	SetGameModeText("sfrpg");
 	ShowPlayerMarkers(1);
@@ -66,6 +72,7 @@ public OnGameModeInit(){
 }
 
 public OnGameModeExit(){
+	MySQLExit();
 	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
 	SendClientMessageToAll(0xFFFFFF, "server calls exit before being killed");
 	return 1; //return 0 to prevent filterscripts from receiving the callback

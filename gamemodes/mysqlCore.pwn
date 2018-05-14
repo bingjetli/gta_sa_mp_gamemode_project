@@ -9,10 +9,10 @@ stock MySQLInit(){
     new MySQLOpt:option_id = mysql_init_options();
     mysql_set_option(option_id, AUTO_RECONNECT, true);
     database = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE, option_id);
-	if(database == MYSQL_INVALID_HANDLE || mysql_errno(Database) != 0){ // Checking if the database connection is invalid to shutdown.
+	if(database == MYSQL_INVALID_HANDLE || mysql_errno(database) != 0){ // Checking if the database connection is invalid to shutdown.
 		print("I couldn't connect to the MySQL server, closing."); // Printing a message to the log.
 		SendRconCommand("exit"); // Sending console command to shut down server.s
-		return 1;
+		return 0;
 	}
     print("MySQL connection established.");
 	new query[1024] = "CREATE TABLE IF NOT EXISTS `pdata` (`db_id` mediumint UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,";
@@ -21,10 +21,11 @@ stock MySQLInit(){
 	strins("`bankmoney` int UNSIGNED NOT NULL DEFAULT '0',`shadowbanned` bool NOT NULL DEFAULT '0',`autologin` bool NOT NULL DEFAULT '0',",query,strlen(query));
 	strins("`health` tinyint UNSIGNED NOT NULL DEFAULT '50',`armor` tinyint UNSIGNED NOT NULL DEFAULT '0',`timezone` tinyint SIGNED NOT NULL DEFAULT '0',",query,strlen(query));
 	strins("`adminlevel` tinyint UNSIGNED NOT NULL DEFAULT '0', UNIQUE KEY `name` (`name`))",query,strlen(query));
-	//strins("",query,strlen(query));
     mysql_tquery(database, query);
-
+	return 1;
 }
+
+//strins("",query,strlen(query));
 
 stock MySQLExit(){
 	foreach(new i: Player){
