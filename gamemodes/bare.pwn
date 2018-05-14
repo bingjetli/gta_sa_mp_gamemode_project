@@ -7,6 +7,7 @@
 #include <sscanf2>
 #include <a_mysql>
 #include <easyDialog>
+#include <foreach>
 
 //this is where you includae your modules
 #include "./mapicons.pwn"
