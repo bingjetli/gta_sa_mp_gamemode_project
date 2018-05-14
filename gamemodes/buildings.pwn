@@ -29,7 +29,7 @@
 */
 #define MAX_BUILDINGS 100
 #define MAX_CACHED_PICKUPS 4096
-#define ENEX_MARKER_MODEL_ID 19198
+#define ENEX_MARKER_MODEL_ID 19197
 #define ENEX_TELEPORT_COOLDOWN 3000 //miliseconds
 
 enum ENUM_BUILDINGS_DATA {
@@ -216,8 +216,9 @@ stock buildings_OnPlayerPickUpPickup(playerid, pickupid){
 	buildings_player_enex_cooldowns[playerid] = true;
 	SetTimerEx("buildings_SetPlayerEnExCooldown", ENEX_TELEPORT_COOLDOWN, false, "d", playerid);
 
-	SetPlayerPos(playerid, buildings_gta_enex[buildings_cached_pickups[pickupid]][X2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Y2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Z2]);
+	SetPlayerPos(playerid, buildings_gta_enex[buildings_cached_pickups[pickupid]][X2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Y2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Z2] + buildings_gta_enex[buildings_cached_pickups[pickupid]][I2]);
 	SetPlayerFacingAngle(playerid, buildings_gta_enex[buildings_cached_pickups[pickupid]][ROT2]);
+	SetCameraBehindPlayer(playerid);
 	return 1;
 }
 
