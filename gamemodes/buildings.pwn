@@ -74,6 +74,8 @@ enum ENUM_GTASA_ENEX_DATA {
  * GTA SA ENEX DATA 
  * extracted from .ipl files
  * table best viewed with a tabwidth of 4
+ * structure preserved to make importing new enexs easier
+ * importing enexs should have proper int to float conversions to prevent tag mismatches
 */
 stock static const buildings_gta_enex[][ENUM_GTASA_ENEX_DATA] = {
 //x1		 y1			 z1			 rot1			 w1			 w2			 c8	 x2			 y2			 z2			 rot2		 int flag	 name		 sky i2	 t1	 t2
@@ -156,6 +158,11 @@ stock static const buildings_data[][ENUM_BUILDINGS_DATA] = {
 };
 
 stock static buildings_cached_pickups[MAX_CACHED_PICKUPS];
+
+stock buildings_OnGameModeInit(){
+	DisableInteriorEnterExits();
+	return 1;
+}
 
 stock buildings_OnPlayerConnect(playerid){
 	for(new i; i < sizeof(buildings_gta_enex); i++){
