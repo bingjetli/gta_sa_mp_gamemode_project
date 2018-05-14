@@ -16,12 +16,16 @@ stock MySQLInit(){
 	}
     print("MySQL connection established.");
 	new query[1024] = "CREATE TABLE IF NOT EXISTS `pdata` (`db_id` mediumint UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,";
+	print("Query newd.");
 	strins("`name` varchar(24) NOT NULL,`pwhash` char(65) NOT NULL,`ip` char(16) NOT NULL,`pwsalt` char(11) NOT NULL,",query,strlen(query));
+    print("first insert");
 	strins("`deaths` smallint UNSIGNED NOT NULL DEFAULT '0', `kills` smallint UNSIGNED NOT NULL DEFAULT '0', `cash` smallint NOT NULL UNSIGNED DEFAULT '0',",query,strlen(query));
 	strins("`bankmoney` int UNSIGNED NOT NULL DEFAULT '0',`shadowbanned` bool NOT NULL DEFAULT '0',`autologin` bool NOT NULL DEFAULT '0',",query,strlen(query));
+    print("3rd insert");
 	strins("`health` tinyint UNSIGNED NOT NULL DEFAULT '50',`armor` tinyint UNSIGNED NOT NULL DEFAULT '0',`timezone` tinyint SIGNED NOT NULL DEFAULT '0',",query,strlen(query));
 	strins("`adminlevel` tinyint UNSIGNED NOT NULL DEFAULT '0', UNIQUE KEY `name` (`name`))",query,strlen(query));
-    mysql_tquery(database, query);
+    print("before sent.");
+	mysql_tquery(database, query);
     print("Query sent.");
 	return 1;
 }
