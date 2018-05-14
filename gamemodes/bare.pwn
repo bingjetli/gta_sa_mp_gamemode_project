@@ -12,7 +12,7 @@
 //this is where you includae your modules
 #include "./mapIcons.pwn"
 #include "./buildings.pwn"
-//#include "./pdataArray.pwn"
+#include "./pdataArray.pwn"
 #include "./commands.pwn"
 #include "./sequel.pwn"
 #include "./dialogs.pwn"
@@ -71,7 +71,7 @@ public OnGameModeInit(){
 }
 
 public OnGameModeExit(){
-	MySQLExit();
+	sequel_Exit();
 	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
 	SendClientMessageToAll(0xFFFFFF, "server calls exit before being killed");
 	return 1; //return 0 to prevent filterscripts from receiving the callback

@@ -3,7 +3,7 @@ enum player_data_enum {
 	name[25],
 	pwhash[65],
 	pwsalt[11],
-	pwattempts,
+	pwfails,
 	kills,
 	deaths,
 	bool:loggedin,
@@ -17,7 +17,8 @@ enum player_data_enum {
 	ip[16],
 	autologin,
 	adminlevel,
-	corrupt_check
+	corrupt_check,
+	cache:sequel_caches
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];
