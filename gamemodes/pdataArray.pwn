@@ -16,7 +16,8 @@ enum player_data_enum {
 	timezone,
 	ip[16],
 	autologin,
-	adminlevel
+	adminlevel,
+	corrupt_check
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];

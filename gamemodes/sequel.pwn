@@ -3,24 +3,22 @@
 #define MYSQL_PASS        "H&131{}h" 
 #define MYSQL_DATABASE    "samp" 
 
-new MySQL:database, corrupt_check[MAX_PLAYERS];
+new MySQL:database;
 
-stock MySQLInit(){
+sequel_Init(){
     new MySQLOpt:option_id = mysql_init_options();
     mysql_set_option(option_id, AUTO_RECONNECT, true);
     database = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE, option_id);
 	if(database == MYSQL_INVALID_HANDLE || mysql_errno(database) != 0){ // Checking if the database connection is invalid to shutdown.
 		print("I couldn't connect to the MySQL server, closing."); // Printing a message to the log.
 		SendRconCommand("exit"); // Sending console command to shut down server.
-		return 0;
 	}
-    print("MySQL connection established.");
-	return 1;
+	else print("MySQL connection established.");
 }
 
 //strins("",query,strlen(query));
 
-stock MySQLExit(){
+sequel_Exit(){
 	foreach(new i: Player){
 		if(IsPlayerConnected(i)){
 			OnPlayerDisconnect(i, 1);
