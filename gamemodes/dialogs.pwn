@@ -1,7 +1,5 @@
-Dialog:WeaponMenu(playerid, response, listitem, inputtext[])
-{
-    if (response)
-    {
+Dialog:WeaponMenu(playerid, response, listitem, inputtext[]){
+    if (response){
         new str[64];
         format(str, 64, "You have selected the '%s'.", inputtext);
 
@@ -11,10 +9,8 @@ Dialog:WeaponMenu(playerid, response, listitem, inputtext[])
     return 1;
 }
 
-public OnDialogPerformed(playerid, dialog[], response, success)
-{
-    if (!strcmp(dialog, "WeaponMenu") && IsPlayerInAnyVehicle(playerid))
-    {
+public OnDialogPerformed(playerid, dialog[], response, success){
+    if (!strcmp(dialog, "WeaponMenu") && IsPlayerInAnyVehicle(playerid)){
         SendClientMessage(playerid, -1, "You must be on-foot to spawn a weapon.");
         return 0;
     }

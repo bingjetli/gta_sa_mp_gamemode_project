@@ -10,18 +10,19 @@
 #include <foreach>
 
 //this is where you includae your modules
-#include "./mapicons.pwn"
+#include "./mapIcons.pwn"
 #include "./buildings.pwn"
 //#include "./pdataArray.pwn"
-#include "./generalCommands.pwn"
-#include "./mysqlCore.pwn"
+#include "./commands.pwn"
+#include "./sequel.pwn"
 #include "./dialogs.pwn"
-#include "./accountsSystem.pwn"
+#include "./accounts.pwn"
 
 
 main();
 
 public OnPlayerConnect(playerid){
+	accounts_QueryPlayerData(playerid);
 	mapIcons_OnPlayerConnect(playerid);
 	buildings_OnPlayerConnect(playerid);
 	return 1;
@@ -59,7 +60,7 @@ public OnPlayerRequestClass(playerid, classid){
 }
 
 public OnGameModeInit(){
-	if(!MySQLInit()) return 1;
+	sequel_Init();
     UsePlayerPedAnims();
 	SetGameModeText("sfrpg");
 	ShowPlayerMarkers(1);
