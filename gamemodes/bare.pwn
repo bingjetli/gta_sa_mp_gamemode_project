@@ -73,6 +73,7 @@ public OnGameModeInit(){
 
 public OnGameModeExit(){
 	sequel_Exit();
+	buildings_OnGameModeExit();
 	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
 	SendClientMessageToAll(0xFFFFFF, "server calls exit before being killed");
 	return 1; //return 0 to prevent filterscripts from receiving the callback

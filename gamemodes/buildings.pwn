@@ -29,6 +29,7 @@
 */
 #define MAX_BUILDINGS 100
 #define MAX_CACHED_PICKUPS 4096
+#define ENEX_MARKER_MODEL_ID 1273
 
 enum ENUM_BUILDINGS_DATA {
 	Float:ENTRY_PICKUP_X,
@@ -49,6 +50,22 @@ enum ENUM_BUILDINGS_DATA {
 	EXIT_TARGET_INTERIOR_ID
 };
 
+/*
+ * GTASA_ENEX_DATA_STRUCTURE
+ *
+ * X1, Y1, Z1, ROT - entrance location
+ * W1 - X width of entry
+ * W2 - Y width of entry
+ * C8 - constant 8
+ * X2, Y2, Z2, ROT2 - exit location
+ * INT - target interior number
+ * FLAG - marker type
+ * NAME - interior name/mission script
+ * SKY - sky color changer
+ * I2 - unknown interger flags, could be weather related
+ * TIME_ON - enables the marker at this time 
+ * TIME_OFF - diables the marker at this time
+*/
 enum ENUM_GTASA_ENEX_DATA {
 	Float:X1,
 	Float:Y1,
@@ -161,6 +178,21 @@ stock static buildings_cached_pickups[MAX_CACHED_PICKUPS];
 
 stock buildings_OnGameModeInit(){
 	DisableInteriorEnterExits();
+
+	for(new i; i < sizeof(buildings_gta_enex); i++){
+		/*
+		 * creates two pickups and caches their pickup id to reference the current enex marker in buildings_gta_enex, entry and exit pickup respectively
+		*/
+		buildings_cached_pickups[CreatePickup(ENEX_MARKER_MODEL_ID, 1, buildings_gta_enex[i][X1], buildings_gta_enex[i][Y1], buildings_gta_enex[i][Z1], 0)] = i;
+		buildings_cached_pickups[CreatePickup(ENEX_MARKER_MODEL_ID, 1, buildings_gta_enex[i][X2], buildings_gta_enex[i][Y2], buildings_gta_enex[i][Z2], i+1)] = i; //last argument is the pickup's virtual world, offset by 1;
+	}
+	return 1;
+}
+
+stock buildings_OnGameModeExit(){
+	for(new i; i < sizeof(buildings_cached_pickups); i++){
+		DestroyPickup(i);
+	}
 	return 1;
 }
 
