@@ -59,6 +59,11 @@ public OnPlayerRequestClass(playerid, classid){
 	return 1;
 }
 
+public OnPlayerPickUpPickup(playerid, pickupid){
+	buildings_OnPlayerPickUpPickup(playerid, pickupid);
+	return 1;
+}
+
 public OnGameModeInit(){
 	sequel_Init();
     UsePlayerPedAnims();

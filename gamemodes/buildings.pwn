@@ -29,7 +29,8 @@
 */
 #define MAX_BUILDINGS 100
 #define MAX_CACHED_PICKUPS 4096
-#define ENEX_MARKER_MODEL_ID 1273
+#define ENEX_MARKER_MODEL_ID 19198
+#define ENEX_TELEPORT_COOLDOWN 3000 //miliseconds
 
 enum ENUM_BUILDINGS_DATA {
 	Float:ENTRY_PICKUP_X,
@@ -175,6 +176,9 @@ stock static const buildings_data[][ENUM_BUILDINGS_DATA] = {
 };
 
 stock static buildings_cached_pickups[MAX_CACHED_PICKUPS];
+stock static buildings_player_enex_cooldowns[MAX_PLAYERS];
+
+forward buildings_SetPlayerEnExCooldown(playerid);
 
 stock buildings_OnGameModeInit(){
 	DisableInteriorEnterExits();
@@ -201,4 +205,22 @@ stock buildings_OnPlayerConnect(playerid){
 		SetPlayerMapIcon(playerid, i, buildings_gta_enex[i][X1], buildings_gta_enex[i][Y1], buildings_gta_enex[i][Z1], 37, 0, MAPICON_LOCAL);
 	}
 	return 1;
+}
+
+stock buildings_OnPlayerPickUpPickup(playerid, pickupid){
+	/*
+	 * due to the way enex markers are/will be scripted, players will be teleported immediately upon picking up the enex pickup
+	 * buildings_player_enex_cooldowns is then used to store whether or not a player can be teleported again when inside an enex marker
+	 * this prevents cases where a player will be continuously teleported while inside an enex marker
+	*/
+	buildings_player_enex_cooldowns[playerid] = true;
+	SetTimerEx("buildings_SetPlayerEnExCooldown", ENEX_TELEPORT_COOLDOWN, false, "d", playerid);
+
+	SetPlayerPos(playerid, buildings_gta_enex[buildings_cached_pickups[pickupid]][X2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Y2], buildings_gta_enex[buildings_cached_pickups[pickupid]][Z2]);
+	SetPlayerFacingAngle(playerid, buildings_gta_enex[buildings_cached_pickups[pickupid]][ROT2]);
+	return 1;
+}
+
+public buildings_SetPlayerEnExCooldown(playerid){
+	buildings_player_enex_cooldowns[playerid] = false;
 }
