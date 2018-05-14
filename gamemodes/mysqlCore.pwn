@@ -15,14 +15,6 @@ stock MySQLInit(){
 		return 0;
 	}
     print("MySQL connection established.");
-	new query[2048] = "CREATE TABLE IF NOT EXISTS `pdata` (`db_id` mediumint UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,";
-	strins(query,"`name` varchar(24) NOT NULL,`pwhash` char(65) NOT NULL,`ip` char(16) NOT NULL,`pwsalt` char(11) NOT NULL,",strlen(query));
-	strins(query,"`deaths` smallint UNSIGNED NOT NULL DEFAULT '0', `kills` smallint UNSIGNED NOT NULL DEFAULT '0', `cash` smallint NOT NULL UNSIGNED DEFAULT '0',",strlen(query));
-	strins(query,"`bankmoney` int UNSIGNED NOT NULL DEFAULT '0',`shadowbanned` bool NOT NULL DEFAULT '0',`autologin` bool NOT NULL DEFAULT '0',",strlen(query));
-	strins(query,"`health` tinyint UNSIGNED NOT NULL DEFAULT '50',`armor` tinyint UNSIGNED NOT NULL DEFAULT '0',`timezone` tinyint SIGNED NOT NULL DEFAULT '0',",strlen(query));
-	strins(query,"`adminlevel` tinyint UNSIGNED NOT NULL DEFAULT '0', UNIQUE KEY `name` (`name`))",strlen(query));
-	mysql_tquery(database, query);
-    print("Query sent.");
 	return 1;
 }
 
@@ -36,3 +28,30 @@ stock MySQLExit(){
 	}
 	mysql_close(database);
 }
+
+
+
+
+/* Current working query
+
+CREATE TABLE `pdata` (
+  `db_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(24) NOT NULL,
+  `pwhash` char(65) NOT NULL,
+  `ip` char(16) NOT NULL,
+  `pwsalt` char(11) NOT NULL,
+  `deaths` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `kills` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `cash` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `bankmoney` int(10) unsigned NOT NULL DEFAULT '0',
+  `shadowbanned` tinyint(1) NOT NULL DEFAULT '0',
+  `autologin` tinyint(1) NOT NULL DEFAULT '0',
+  `health` tinyint(3) unsigned NOT NULL DEFAULT '50',
+  `armor` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `timezone` tinyint(4) NOT NULL DEFAULT '0',
+  `adminlevel` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`db_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+*/
