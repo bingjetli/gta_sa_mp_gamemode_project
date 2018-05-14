@@ -1,5 +1,4 @@
 cmd:bigdick(playerid, params[]){
-	testvar=69;
 	SendClientMessageToAll(0xFFFFFF,"bigdick");
     return 1;
 }

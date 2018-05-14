@@ -33,10 +33,6 @@ enum player_data_enum {
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];
-new testvar;
-new strr[10];
-
-
 
 
 //this is where you includae your modules
@@ -48,13 +44,11 @@ new strr[10];
 
 
 
-
-
 main();
 
+
+
 public OnPlayerConnect(playerid){
-    valstr(strr,testvar);
-	SendClientMessageToAll(-1,strr);
 	sequel_QueryPlayerData(playerid);
 	mapIcons_OnPlayerConnect(playerid);
 	buildings_OnPlayerConnect(playerid);
@@ -92,11 +86,6 @@ public OnPlayerRequestClass(playerid, classid){
 	return 1;
 }
 
-public OnPlayerPickUpPickup(playerid, pickupid){
-	buildings_OnPlayerPickUpPickup(playerid, pickupid);
-	return 1;
-}
-
 public OnGameModeInit(){
 	sequel_Init();
     UsePlayerPedAnims();
@@ -110,7 +99,6 @@ public OnGameModeInit(){
 
 public OnGameModeExit(){
 	sequel_Exit();
-	buildings_OnGameModeExit();
 	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
 	SendClientMessageToAll(0xFFFFFF, "server calls exit before being killed");
 	return 1; //return 0 to prevent filterscripts from receiving the callback
