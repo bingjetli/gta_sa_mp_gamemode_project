@@ -11,7 +11,7 @@ stock MySQLInit(){
     database = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE, option_id);
 	if(database == MYSQL_INVALID_HANDLE || mysql_errno(database) != 0){ // Checking if the database connection is invalid to shutdown.
 		print("I couldn't connect to the MySQL server, closing."); // Printing a message to the log.
-		SendRconCommand("exit"); // Sending console command to shut down server.s
+		SendRconCommand("exit"); // Sending console command to shut down server.
 		return 0;
 	}
     print("MySQL connection established.");
@@ -22,6 +22,7 @@ stock MySQLInit(){
 	strins("`health` tinyint UNSIGNED NOT NULL DEFAULT '50',`armor` tinyint UNSIGNED NOT NULL DEFAULT '0',`timezone` tinyint SIGNED NOT NULL DEFAULT '0',",query,strlen(query));
 	strins("`adminlevel` tinyint UNSIGNED NOT NULL DEFAULT '0', UNIQUE KEY `name` (`name`))",query,strlen(query));
     mysql_tquery(database, query);
+    print("Query sent.");
 	return 1;
 }
 
