@@ -59,6 +59,7 @@ public OnPlayerConnect(playerid)
 	GetPlayerName(playerid, n, sizeof(n));
 	format(s, sizeof(s), "%s connected to the server; c = %i", n, c);
 	SendClientMessageToAll(-1, s);
+	c++;
 	return 1;
 }
 
