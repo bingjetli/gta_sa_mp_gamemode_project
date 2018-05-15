@@ -86,8 +86,14 @@ public OnPlayerRequestClass(playerid, classid){
 	return 1;
 }
 
+public OnPlayerPickUpPickup(playerid, pickupid){
+	buildings_OnPlayerPickUpPickup(playerid, pickupid);
+	return 1;
+}
+
 public OnGameModeInit(){
 	sequel_Init();
+	buildings_OnGameModeInit();
     UsePlayerPedAnims();
 	SetGameModeText("sfrpg");
 	ShowPlayerMarkers(1);
@@ -99,6 +105,7 @@ public OnGameModeInit(){
 
 public OnGameModeExit(){
 	sequel_Exit();
+	buildings_OnGameModeExit();
 	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
 	SendClientMessageToAll(0xFFFFFF, "server calls exit before being killed");
 	return 1; //return 0 to prevent filterscripts from receiving the callback
