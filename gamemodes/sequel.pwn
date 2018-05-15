@@ -44,7 +44,7 @@ sequel_QueryPlayerData(playerid){ //query time & login time - login time is time
 forward OnPlayerDataCheck(playerid, corrupt_checker);
 public OnPlayerDataCheck(playerid, corrupt_checker){
 
-    if (corrupt_checker != pdata[playerid][corrupt_check]) return print("================>>>>id corrupt");
+    if (corrupt_checker != pdata[playerid][corrupt_check]) return SendClientMessageToAll(-1,"================>>>>id corrupt");
     
 	new String[150];
 
