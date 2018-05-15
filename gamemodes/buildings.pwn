@@ -222,8 +222,8 @@ stock buildings_OnGameModeInit(){
 		/*
 		 * creates two pickups and caches their pickup id to reference the current enex marker in buildings_data, entry and exit pickup respectively
 		*/
-		buildings_cached_pickups[CreatePickup(ENEX_MARKER_MODEL_ID, 1, buildings_data[i][ENTRY_PICKUP_X], buildings_data[i][ENTRY_PICKUP_Y], buildings_data[i][ENTRY_PICKUP_Z] + 2, 0)] = i;
-		buildings_cached_pickups[CreatePickup(ENEX_MARKER_MODEL_ID, 1, buildings_data[i][EXIT_PICKUP_X], buildings_data[i][EXIT_PICKUP_Y], buildings_data[i][EXIT_PICKUP_Z] +2, i+1)] = i; //last argument is the pickup's virtual world, offset by 1;
+		buildings_cached_pickups[CreatePickup(ENEX_MARKER_MODEL_ID, 1, buildings_data[i][ENTRY_PICKUP_X], buildings_data[i][ENTRY_PICKUP_Y], buildings_data[i][ENTRY_PICKUP_Z], 0)] = i;
+		buildings_cached_pickups[CreatePickup(ENEX_MARKER_MODEL_ID, 1, buildings_data[i][EXIT_PICKUP_X], buildings_data[i][EXIT_PICKUP_Y], buildings_data[i][EXIT_PICKUP_Z], i+1)] = i; //last argument is the pickup's virtual world, offset by 1;
 	}
 	return 1;
 }
