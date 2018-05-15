@@ -10,6 +10,7 @@ Dialog:weaponsmenu(playerid, response, listitem, inputtext[]){
 }
 
 Dialog:changenamedialog(playerid, response, listitem, inputtext[]){
+	return 1;
 }
 
 
