@@ -3,12 +3,12 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS 50
 
-#include <Pawn.CMD>
-#include <sscanf2>
-#include <a_mysql>
-#include <easyDialog>
-#include <foreach>
-#include <fixes2>
+//#include <Pawn.CMD>
+//#include <sscanf2>
+//#include <a_mysql>
+//#include <easyDialog>
+//#include <foreach>
+//#include <fixes2>
 
 enum player_data_enum {
 	db_id,                      //db
