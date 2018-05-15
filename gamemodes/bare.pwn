@@ -36,7 +36,6 @@ new pdata[MAX_PLAYERS][player_data_enum];
 
 
 //this is where you includae your modules
-#include "./mapIcons.pwn"
 #include "./buildings.pwn"
 #include "./commands.pwn"
 #include "./sequel.pwn"
@@ -44,7 +43,7 @@ new pdata[MAX_PLAYERS][player_data_enum];
 
 main();
 
-new player_connect_count = 0;
+new player_connect_count;
 
 public OnPlayerConnect(playerid){
 	new player_name[MAX_PLAYER_NAME];
@@ -56,7 +55,6 @@ public OnPlayerConnect(playerid){
 	SendClientMessageToAll(-1,string2);
 
 	sequel_QueryPlayerData(playerid);
-	//deprecated: mapIcons_OnPlayerConnect(playerid);
 	buildings_OnPlayerConnect(playerid);
 	return 1;
 }
@@ -98,8 +96,10 @@ public OnPlayerPickUpPickup(playerid, pickupid){
 }
 
 public OnGameModeInit(){
+	player_connect_count = 0;
 	sequel_Init();
 	buildings_OnGameModeInit();
+
     UsePlayerPedAnims();
 	SetGameModeText("sfrpg");
 	ShowPlayerMarkers(1);
