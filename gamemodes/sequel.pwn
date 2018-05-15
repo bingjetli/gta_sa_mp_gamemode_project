@@ -38,14 +38,19 @@ sequel_QueryPlayerData(playerid){ //query time & login time - login time is time
 
 	mysql_format(database, query, sizeof(query), "SELECT * FROM `pdata` WHERE `name` = '%e' LIMIT 1", pdata[playerid][name]);
 	mysql_tquery(database, query, "OnPlayerDataCheck", "ii", playerid, pdata[playerid][corrupt_check]);
+	SendClientMessageToAll(-1,"tquery sent!");
 	return 1;
 }
 
 forward OnPlayerDataCheck(playerid, corrupt_checker);
 public OnPlayerDataCheck(playerid, corrupt_checker){
 
-    if (corrupt_checker != pdata[playerid][corrupt_check]) return SendClientMessageToAll(-1,"================>>>>id corrupt");
-    
+    //if (corrupt_checker != pdata[playerid][corrupt_check]) return SendClientMessage(playerid,-1,"================>>>>ur ID is corrupt!!");
+    if (corrupt_checker != pdata[playerid][corrupt_check]){
+        new strings[69];
+        format(strings, 69, "id %i is corrupt!, %i pdata,%i checker", playerid, pdata[playerid][corrupt_check], corrupt_checker);
+        SendClientMessageToAll(-1,strings);
+    }
 	new String[150];
 
 	if(cache_num_rows() > 0){
