@@ -6,6 +6,7 @@
 new MySQL:database;
 
 sequel_Init(){
+	mysql_log(ALL);
     new MySQLOpt:option_id = mysql_init_options();
     mysql_set_option(option_id, AUTO_RECONNECT, true);
     database = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE, option_id);
@@ -41,12 +42,8 @@ sequel_QueryPlayerData(playerid){ //query time & login time - login time is time
 	pdata[playerid][corrupt_check]+=1;
 
 	mysql_format(database, query, sizeof(query), "SELECT * FROM `pdata` WHERE `name` = '%e' LIMIT 1", pdata[playerid][name]);
-	if(mysql_tquery(database, query, "OnPlayerDataCheck", "ii", playerid, pdata[playerid][corrupt_check]) == 1){
-		SendClientMessageToAll(-1,"tquery was successful!");
-	}
-	else {
-		SendClientMessageToAll(-1,"tquery was unsuccessful!");
-	}
+	if(mysql_tquery(database, query, "OnPlayerDataCheck", "ii", playerid, pdata[playerid][corrupt_check])) SendClientMessageToAll(-1,"tquery was successful!");
+	else SendClientMessageToAll(-1,"tquery was unsuccessful!");
 }
 
 forward OnPlayerDataCheck(playerid, corrupt_checker);
