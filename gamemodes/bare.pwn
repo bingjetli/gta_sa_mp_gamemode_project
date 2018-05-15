@@ -1,7 +1,7 @@
 #include <a_samp>
 
-#undef MAX_PLAYERS
-#define MAX_PLAYERS 50
+//#undef MAX_PLAYERS
+//#define MAX_PLAYERS 50
 
 //#include <Pawn.CMD>
 //#include <sscanf2>
@@ -10,6 +10,7 @@
 //#include <foreach>
 //#include <fixes2>
 
+/*
 enum player_data_enum {
 	db_id,                      //db
 	name[25],                   //db
@@ -33,6 +34,7 @@ enum player_data_enum {
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];
+*/
 
 //this is where you includae your modules
 //#include "./buildings.pwn"
@@ -40,7 +42,9 @@ new pdata[MAX_PLAYERS][player_data_enum];
 //#include "./sequel.pwn"
 //#include "./dialogs.pwn"
 
-main();
+main(){
+	print("gamemode started...");
+}
 
 new player_connect_count;
 
