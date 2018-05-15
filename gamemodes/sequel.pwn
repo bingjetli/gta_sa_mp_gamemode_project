@@ -34,7 +34,7 @@ sequel_QueryPlayerData(playerid){ //query time & login time - login time is time
 	pdata[playerid][pwfails]=0;
 	
 	GetPlayerName(playerid, pdata[playerid][name], MAX_PLAYER_NAME); // Getting the player's name.
-	pdata[playerid][corrupt_check]++;
+	pdata[playerid][corrupt_check]+=1;
 
 	mysql_format(database, query, sizeof(query), "SELECT * FROM `pdata` WHERE `name` = '%e' LIMIT 1", pdata[playerid][name]);
 	mysql_tquery(database, query, "OnPlayerDataCheck", "ii", playerid, pdata[playerid][corrupt_check]);
