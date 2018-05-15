@@ -113,7 +113,7 @@ public OnGameModeInit(){
 }
 
 public OnGameModeExit(){
-	sequel_Exit();
+	
 	buildings_OnGameModeExit();
 	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
 	SendClientMessageToAll(-1, "gamemode exit successfully called");

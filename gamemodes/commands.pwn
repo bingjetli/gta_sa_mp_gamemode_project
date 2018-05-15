@@ -16,6 +16,23 @@ cmd:tp(playerid, params[]){
 }
 alias:bigdick("dickbig", "biggus", "dickus"); //as many as you want
 
+cmd:gmx(playerid, params[]){
+	SetTimer("gmxxing",5000,false);
+	SendClientMessageToAll(-1,"server gmx in 5 secs!!");
+    sequel_Exit();
+	return 1;
+}
+
+forward gmxxing();
+public gmxxing(){
+	SendRconCommand("gmx");
+	return 1;
+}
+
+cmd:reset(playerid, params[]){
+	SendRconCommand("exit");
+	return 1;
+}
 
 cmd:weapons(playerid, params[]){
     Dialog_Show(playerid, weaponsmenu, DIALOG_STYLE_LIST, "Weapon Menu", "9mm\nSilenced 9mm\nDesert Eagle\nShotgun\nSawn-off Shotgun\nCombat Shotgun", "Select", "Cancel");
