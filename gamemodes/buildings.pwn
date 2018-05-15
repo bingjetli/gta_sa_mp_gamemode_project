@@ -223,7 +223,7 @@ stock buildings_OnGameModeInit(){
 		 * creates two pickups and caches their pickup id to reference the current enex marker in buildings_data, entry and exit pickup respectively
 		*/
 		buildings_cached_pickups[CreatePickup(ENEX_MARKER_MODEL_ID, 1, buildings_data[i][ENTRY_PICKUP_X], buildings_data[i][ENTRY_PICKUP_Y], buildings_data[i][ENTRY_PICKUP_Z], 0)] = i;
-		buildings_cached_pickups[CreatePickup(ENEX_MARKER_MODEL_ID, 1, buildings_data[i][EXIT_PICKUP_X], buildings_data[i][EXIT_PICKUP_Y], buildings_data[i][EXIT_PICKUP_Z], i+1)] = i; //last argument is the pickup's virtual world, offset by 1;
+		buildings_cached_pickups[CreatePickup(ENEX_MARKER_MODEL_ID, 1, buildings_data[i][EXIT_PICKUP_X], buildings_data[i][EXIT_PICKUP_Y], buildings_data[i][EXIT_PICKUP_Z], 1)] = i; //last argument is the pickup's virtual world, offset by 1;
 	}
 	return 1;
 }
@@ -256,7 +256,7 @@ stock buildings_OnPlayerPickUpPickup(playerid, pickupid){
 			SetPlayerPos(playerid, buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_X], buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_Y], buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_Z] + 1.5);
 			SetPlayerFacingAngle(playerid, buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_FACING_ANGLE]);
 			SetPlayerInterior(playerid, buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_INTERIOR_ID]);
-			SetPlayerVirtualWorld(playerid, buildings_cached_pickups[pickupid]++); //virtual world is equal to the index of the building + 1 since the default virtual world is 0, so building 0' virtual world is 1
+			SetPlayerVirtualWorld(playerid, 1); //virtual world is equal to the index of the building + 1 since the default virtual world is 0, so building 0' virtual world is 1
 		}
 		else {
 			SetPlayerPos(playerid, buildings_data[buildings_cached_pickups[pickupid]][EXIT_TARGET_X], buildings_data[buildings_cached_pickups[pickupid]][EXIT_TARGET_Y], buildings_data[buildings_cached_pickups[pickupid]][EXIT_TARGET_Z] + 1.5);
