@@ -1,16 +1,16 @@
 #include <a_samp>
 
-//#undef MAX_PLAYERS
-//#define MAX_PLAYERS 50
+#undef MAX_PLAYERS
+#define MAX_PLAYERS 50
 
-//#include <Pawn.CMD>
-//#include <sscanf2>
-//#include <a_mysql>
-//#include <easyDialog>
-//#include <foreach>
-//#include <fixes2>
+#include <Pawn.CMD>
+#include <sscanf2>
+#include <a_mysql>
+#include <easyDialog>
+#include <foreach>
+#include <fixes2>
 
-/*
+
 enum player_data_enum {
 	db_id,                      //db
 	name[25],                   //db
@@ -34,13 +34,13 @@ enum player_data_enum {
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];
-*/
+
 
 //this is where you includae your modules
-//#include "./buildings.pwn"
-//#include "./commands.pwn"
-//#include "./sequel.pwn"
-//#include "./dialogs.pwn"
+#include "./buildings.pwn"
+#include "./commands.pwn"
+#include "./sequel.pwn"
+#include "./dialogs.pwn"
 
 main(){
 	print("gamemode started...");
@@ -57,8 +57,8 @@ public OnPlayerConnect(playerid){
 	format(string2,69,"%s connected to the server! #%d", player_name, player_connect_count);
 	SendClientMessageToAll(-1,string2);
 
-//	sequel_QueryPlayerData(playerid);
-//	buildings_OnPlayerConnect(playerid);
+	sequel_QueryPlayerData(playerid);
+	buildings_OnPlayerConnect(playerid);
 	return 1;
 }
 
@@ -94,14 +94,14 @@ public OnPlayerRequestClass(playerid, classid){
 }
 
 public OnPlayerPickUpPickup(playerid, pickupid){
-//	buildings_OnPlayerPickUpPickup(playerid, pickupid);
+	buildings_OnPlayerPickUpPickup(playerid, pickupid);
 	return 1;
 }
 
 public OnGameModeInit(){
 	player_connect_count = 0;
-//	sequel_Init();
-//	buildings_OnGameModeInit();
+	sequel_Init();
+	buildings_OnGameModeInit();
 
     UsePlayerPedAnims();
 	SetGameModeText("sfrpg");
@@ -113,8 +113,8 @@ public OnGameModeInit(){
 }
 
 public OnGameModeExit(){
-//	sequel_Exit();
-//	buildings_OnGameModeExit();
+	sequel_Exit();
+	buildings_OnGameModeExit();
 	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
 	SendClientMessageToAll(0xFFFFFF, "server calls exit before being killed");
 	return 1; //return 0 to prevent filterscripts from receiving the callback
