@@ -127,7 +127,7 @@ stock buildings_OnPlayerPickUpPickup(playerid, pickupid){
 		 * this prevents cases where a player will be continuously teleported while inside an enex marker
 		*/
 		buildings_player_enex_cooldowns[playerid] = true;
-		SetTimerEx("buildings_SetPlayerEnExCooldown", ENEX_TELEPORT_COOLDOWN, false, "d", playerid);
+		SetTimerEx("buildings_SetPlayerEnExCooldown", ENEX_TELEPORT_COOLDOWN, false, "i", playerid);
 
 		if(GetPlayerVirtualWorld(playerid) == 0){
 			SetPlayerPos(playerid, buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_X], buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_Y], buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_Z] + 1.5);
