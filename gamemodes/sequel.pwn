@@ -34,6 +34,10 @@ sequel_QueryPlayerData(playerid){ //query time & login time - login time is time
 	pdata[playerid][pwfails]=0;
 	
 	GetPlayerName(playerid, pdata[playerid][name], MAX_PLAYER_NAME); // Getting the player's name.
+	new stringss[69];
+	format(stringss, 69, "id: %i ....corrupt b4 incre %i pdata", playerid, pdata[playerid][corrupt_check]);
+ 	SendClientMessageToAll(-1,stringss);
+	
 	pdata[playerid][corrupt_check]+=1;
 
 	mysql_format(database, query, sizeof(query), "SELECT * FROM `pdata` WHERE `name` = '%e' LIMIT 1", pdata[playerid][name]);
@@ -49,6 +53,7 @@ public OnPlayerDataCheck(playerid, corrupt_checker){
         new strings[69];
         format(strings, 69, "id %i is corrupt!, %i pdata,%i checker", playerid, pdata[playerid][corrupt_check], corrupt_checker);
         SendClientMessageToAll(-1,strings);
+        return 1;
     }
 	new String[150];
 
