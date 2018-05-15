@@ -50,13 +50,14 @@ public OnPlayerDataCheck(playerid, corrupt_checker){
 
     //if (corrupt_checker != pdata[playerid][corrupt_check]) return SendClientMessage(playerid,-1,"================>>>>ur ID is corrupt!!");
     if (corrupt_checker != pdata[playerid][corrupt_check]){
-        new strings[69];
-        format(strings, 69, "id %i is corrupt!, %i pdata,%i checker", playerid, pdata[playerid][corrupt_check], corrupt_checker);
-        SendClientMessageToAll(-1,strings);
+        new stringsss[169];
+        format(stringsss, 169, "query corrupted, discarding... id: (%i)  pdata:(%i) checker:(%i)", playerid, pdata[playerid][corrupt_check], corrupt_checker);
+        SendClientMessageToAll(-1,stringsss);
         return 1;
     }
-	new String[150];
-
+	new String[150],strings3[169];
+ 	format(strings3, 169, "query clean, accepting... id: (%i)  pdata:(%i) checker:(%i)", playerid, pdata[playerid][corrupt_check], corrupt_checker);
+ 	SendClientMessageToAll(-1,strings3);
 	if(cache_num_rows() > 0){
 		cache_get_value(0, "pwhash", pdata[playerid][pwhash], 65);
 		cache_get_value(0, "pwsalt", pdata[playerid][pwsalt], 11);
