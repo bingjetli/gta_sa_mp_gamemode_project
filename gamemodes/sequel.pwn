@@ -41,8 +41,12 @@ sequel_QueryPlayerData(playerid){ //query time & login time - login time is time
 	pdata[playerid][corrupt_check]+=1;
 
 	mysql_format(database, query, sizeof(query), "SELECT * FROM `pdata` WHERE `name` = '%e' LIMIT 1", pdata[playerid][name]);
-	mysql_tquery(database, query, "OnPlayerDataCheck", "ii", playerid, pdata[playerid][corrupt_check]);
-	SendClientMessageToAll(-1,"tquery sent!");
+	if(mysql_tquery(database, query, "OnPlayerDataCheck", "ii", playerid, pdata[playerid][corrupt_check]) == 1){
+		SendClientMessageToAll(-1,"tquery was successful!");
+	}
+	else {
+		SendClientMessageToAll(-1,"tquery was unsuccessful!");
+	}
 }
 
 forward OnPlayerDataCheck(playerid, corrupt_checker);
