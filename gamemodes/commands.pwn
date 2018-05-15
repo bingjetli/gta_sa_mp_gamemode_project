@@ -30,6 +30,7 @@ public gmxxing(){
 }
 
 cmd:reset(playerid, params[]){
+	sequel_Exit();
 	SendRconCommand("exit");
 	return 1;
 }
