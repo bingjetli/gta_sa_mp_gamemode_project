@@ -42,19 +42,18 @@ new pdata[MAX_PLAYERS][player_data_enum];
 #include "./sequel.pwn"
 #include "./dialogs.pwn"
 
-new pconnect;
-
 main();
 
-
+new player_connect_count = 0;
 
 public OnPlayerConnect(playerid){
-	pconnect++;
 	new string2[69];
-	format(string2,69,"%i times total onplayerconnect called",pconnect);
+	player_connect_count++;
+	format(string2,69,"%i times total onplayerconnect called",player_connect_count);
 	SendClientMessageToAll(-1,string2);
+
 	sequel_QueryPlayerData(playerid);
-	mapIcons_OnPlayerConnect(playerid);
+	//deprecated: mapIcons_OnPlayerConnect(playerid);
 	buildings_OnPlayerConnect(playerid);
 	return 1;
 }
