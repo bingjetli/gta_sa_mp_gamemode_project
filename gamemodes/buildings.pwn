@@ -115,6 +115,7 @@ stock buildings_OnPlayerConnect(playerid){
 	for(new i; i < sizeof(buildings_data); i++){
 		SetPlayerMapIcon(playerid, i, buildings_data[i][ENTRY_PICKUP_X], buildings_data[i][ENTRY_PICKUP_Y], buildings_data[i][ENTRY_PICKUP_Z], 37, 0, MAPICON_LOCAL);
 	}
+	buildings_player_enex_cooldowns[playerid] = false;
 	return 1;
 }
 
