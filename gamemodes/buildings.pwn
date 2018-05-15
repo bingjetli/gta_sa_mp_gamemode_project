@@ -29,7 +29,7 @@
 */
 #define MAX_BUILDINGS 100
 #define MAX_CACHED_PICKUPS 4096
-#define ENEX_MARKER_MODEL_ID 19607
+#define ENEX_MARKER_MODEL_ID 19606
 #define ENEX_TELEPORT_COOLDOWN 3000 //miliseconds
 
 enum ENUM_BUILDINGS_DATA {
@@ -129,17 +129,23 @@ stock buildings_OnPlayerPickUpPickup(playerid, pickupid){
 		buildings_player_enex_cooldowns[playerid] = true;
 		SetTimerEx("buildings_SetPlayerEnExCooldown", ENEX_TELEPORT_COOLDOWN, false, "i", playerid);
 
+		/*
+		* player's current virtual world determines whether or not they are in an interior
+		* [#2] by default, the player's virtual world should be 0 when not in an interior
+		* [#1] interior virtual world is determined by the index of the building in buildings_data +1
+		* 	e.g building[0] would have a virtual world of 1
+		*/
 		if(GetPlayerVirtualWorld(playerid) == 0){
 			SetPlayerPos(playerid, buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_X], buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_Y], buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_Z] + 1.5);
 			SetPlayerFacingAngle(playerid, buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_FACING_ANGLE]);
 			SetPlayerInterior(playerid, buildings_data[buildings_cached_pickups[pickupid]][ENTRY_TARGET_INTERIOR_ID]);
-			SetPlayerVirtualWorld(playerid, buildings_cached_pickups[pickupid]+1); //virtual world is equal to the index of the building + 1 since the default virtual world is 0, so building 0' virtual world is 1
+			SetPlayerVirtualWorld(playerid, buildings_cached_pickups[pickupid]+1); //#1
 		}
 		else {
 			SetPlayerPos(playerid, buildings_data[buildings_cached_pickups[pickupid]][EXIT_TARGET_X], buildings_data[buildings_cached_pickups[pickupid]][EXIT_TARGET_Y], buildings_data[buildings_cached_pickups[pickupid]][EXIT_TARGET_Z] + 1.5);
 			SetPlayerFacingAngle(playerid, buildings_data[buildings_cached_pickups[pickupid]][EXIT_TARGET_FACING_ANGLE]);
 			SetPlayerInterior(playerid, buildings_data[buildings_cached_pickups[pickupid]][EXIT_TARGET_INTERIOR_ID]);
-			SetPlayerVirtualWorld(playerid, 0); 
+			SetPlayerVirtualWorld(playerid, 0); //#2
 		}
 		SetCameraBehindPlayer(playerid);
 	}
