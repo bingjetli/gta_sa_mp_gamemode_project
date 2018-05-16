@@ -35,8 +35,12 @@ stock world_OnPlayerDeath(playerid, killerid, reason){
 }
 
 public world_OnTick(){
-	world_weather = world_weatherids[random(sizeof(world_weatherids))];
-	DebugPrintEx(-1, debug_world, "current weatherid: %d", world_weather);
+	static time_next_weather;
+	if((gettime()/600)%24 == time_next_weather){
+		world_weather = world_weatherids[random(sizeof(world_weatherids))];
+		time_next_weather = random(24);
+		DebugPrintEx(-1, debug_world, "current weatherid: %d, next weather: %2d:00", world_weather, time_next_weather);
+	}
 	for(new i; i<MAX_PLAYERS; i++){
 		if(IsPlayerConnected(i) && GetPlayerState(i) != PLAYER_STATE_WASTED){
 			SetPlayerTime(i, (gettime()/600)%24, (gettime()/10)%60);
