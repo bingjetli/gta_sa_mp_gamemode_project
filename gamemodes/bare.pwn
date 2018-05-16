@@ -53,7 +53,7 @@ public OnPlayerConnect(playerid){
 
 	GetPlayerName(playerid, player_name, sizeof(player_name));
 	player_connect_count++;
-	ClientPrintEx(-1, -1, "%s connected to the server! #%d", player_name, player_connect_count);
+	ClientPrintEx(-1, -1, "%s connected to the server! #%d - clientprintex", player_name, player_connect_count);
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
