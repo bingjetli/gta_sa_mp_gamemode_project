@@ -34,9 +34,11 @@ enum player_data_enum {
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];
+new player_connect_count;
+new const debug_general = 1;
 
 //this is where you includae your modules
-#include "./clientprint.pwn"
+#include "./helper.pwn"
 #include "./buildings.pwn"
 #include "./commands.pwn"
 #include "./sequel.pwn"
@@ -46,14 +48,13 @@ main(){
 	print("gamemode started...");
 }
 
-new player_connect_count;
-
 public OnPlayerConnect(playerid){
 	new player_name[MAX_PLAYER_NAME];
 
 	GetPlayerName(playerid, player_name, sizeof(player_name));
 	player_connect_count++;
-	ClientPrintEx(-1, -1, "%s connected to the server! #%d - clientprintex", player_name, player_connect_count);
+	ClientPrintEx(-1, -1, "%s connected to the server!", player_name);
+	DebugPrintEx(-1, debug_general, "OnPlayerConnect was called %d times!", player_connect_count);
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
