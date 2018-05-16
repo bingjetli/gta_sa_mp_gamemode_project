@@ -45,14 +45,10 @@ new timer_worldtime;
 */
 forward OnWorldTimeTick();
 
-<<<<<<< HEAD
 /*
 * load modules
 */
 #include "./clientprint.pwn"
-=======
-//this is where you includae your modules
->>>>>>> parent of 6a2838f... began implementation of clientprint
 #include "./buildings.pwn"
 #include "./commands.pwn"
 #include "./sequel.pwn"
@@ -68,10 +64,7 @@ main(){
 public OnPlayerConnect(playerid){
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
-<<<<<<< HEAD
 	//deprecated: clientPrint_OnPlayerConnect(playerid);
-=======
->>>>>>> parent of 6a2838f... began implementation of clientprint
 	return 1;
 }
 
