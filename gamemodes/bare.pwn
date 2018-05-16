@@ -54,7 +54,7 @@ public OnPlayerConnect(playerid){
 	GetPlayerName(playerid, player_name, sizeof(player_name));
 	player_connect_count++;
 	ClientPrintEx(-1, -1, "%s connected to the server!", player_name);
-	DebugPrintEx(-1, debug_general, "OnPlayerConnect was called %d times!", player_connect_count);
+	DebugPrintEx(-1, debug_general, "OnPlayerConnect was called %d times!", player_connect_count)
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
