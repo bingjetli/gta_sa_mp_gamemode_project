@@ -45,7 +45,7 @@ public world_OnTick(){
 		if(IsPlayerConnected(i) && GetPlayerState(i) != PLAYER_STATE_WASTED){
 			SetPlayerTime(i, (gettime()/6)%24, (gettime()/1)%60);
 			SetPlayerWeather(i, world_weather);
-			DebugPrintEx(i, debug_world, "current time: %2d:%2d", (gettime()/600)%24, (gettime()/10)%60);
+			DebugPrintEx(i, debug_world, "current time: %2d:%2d", (gettime()/6)%24, (gettime()/1)%60);
 		}
 	}
 }
