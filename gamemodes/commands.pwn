@@ -15,22 +15,17 @@ cmd:tp(playerid, params[]){
 	return 1;
 }
 alias:bigdick("dickbig", "biggus", "dickus"); //as many as you want
+alias:gmx("exit","reset","restart");
 
 cmd:gmx(playerid, params[]){
-	SetTimer("gmxxing",5000,false);
-	SendClientMessageToAll(-1,"server gmx in 5 secs!!");
     sequel_Exit();
+	SetTimer("gmxxing",5000,false);
+	SendClientMessageToAll(-1,"server exiting in 5 secs!!");
 	return 1;
 }
 
 forward gmxxing();
 public gmxxing(){
-	SendRconCommand("gmx");
-	return 1;
-}
-
-cmd:reset(playerid, params[]){
-	sequel_Exit();
 	SendRconCommand("exit");
 	return 1;
 }
