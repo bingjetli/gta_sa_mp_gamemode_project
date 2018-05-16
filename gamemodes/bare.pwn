@@ -128,9 +128,12 @@ public OnGameModeExit(){
 }
 
 public OnWorldTimeTick(){
+	new string[25];
 	for(new i; i < MAX_PLAYERS; i++){
 		if(IsPlayerConnected(i) && GetPlayerState(i) == PLAYER_STATE_SPAWNED){
+			format(string, sizeof(string), "current world time: %2d:%2d", (gettime()/600)%24, (gettime()/10)%60);
 			SetPlayerTime(i, (gettime()/600)%24, (gettime()/10)%60);
+			GameTextForPlayer(i, string, 1000, 3);
 		}
 	}
 }
