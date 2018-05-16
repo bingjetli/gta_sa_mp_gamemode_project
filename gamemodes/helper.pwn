@@ -19,18 +19,25 @@
 *			//this allows you to have unique debug messages that can be turned on and off
 *	DebugPrintEx(playerid, debugvariable, message[], {Float,_}:...);
 *		-outputs a formatted debug message
+*
+* helpful links: http://forum.sa-mp.com/showthread.php?t=570933 
 */
 
+#define COLOR_MSG_NETWORK 0xA9C4E4AA
 #define COLOR_MSG_DEBUG 0x5a8f99ff
+#define COLOR_MSG_SERVER 0x88AA62ff
+
 #define ClientPrintEx(%0,%1,%2,%3) format(clientPrint_string, sizeof(clientPrint_string), %2, %3); if(IsValidPlayerID(%0) == 1) SendClientMessage(%0, %1, clientPrint_string); else SendClientMessageToAll(%1, clientPrint_string)
 #define ClientPrint(%0,%1,%2) if(IsValidPlayerID(%0) == 1) SendClientMessage(%0, %1, %2); else SendClientMessageToAll(%1, %2)
-#define DebugPrint(%0,%1,%2) if(%1 == 1) ClientPrint(%0, COLOR_MSG_DEBUG, %2)
-//#define DebugPrintEx(%0,%1,%2,%3) if(%1 == 1) ClientPrintEx(%0, COLOR_MSG_DEBUG, %2, %3); else gettime()
+#define DebugPrint(%0,%1,%2); \
+if(%1 == 1){ \
+	ClientPrint(%0, COLOR_MSG_DEBUG, %2); \
+}
 #define DebugPrintEx(%0,%1,%2,%3); \
 if(%1 == 1){ \
-format(clientPrint_string, sizeof(clientPrint_string), %2, %3); \
-if(IsValidPlayerID(%0) == 1) SendClientMessage(%0, COLOR_MSG_DEBUG, clientPrint_string); \
-else SendClientMessageToAll(COLOR_MSG_DEBUG, clientPrint_string); \
+	format(clientPrint_string, sizeof(clientPrint_string), %2, %3); \
+	if(IsValidPlayerID(%0) == 1) SendClientMessage(%0, COLOR_MSG_DEBUG, clientPrint_string); \
+	else SendClientMessageToAll(COLOR_MSG_DEBUG, clientPrint_string); \
 }
 
 new clientPrint_string[128];

@@ -4,6 +4,13 @@
 #define MYSQL_DATABASE    "samp" 
 
 new MySQL:database;
+/*
+* set debug_sql to 1 to enable debug text
+* static makes this debug variable only visible within this file
+* this interaction only works with global static variables
+* static normally makes a variable retain it's value within a function
+*/
+static const debug_sql = 1; 
 
 sequel_Init(){
 	mysql_log(ALL);
@@ -35,15 +42,22 @@ sequel_QueryPlayerData(playerid){ //query time & login time - login time is time
 	pdata[playerid][pwfails]=0;
 	
 	GetPlayerName(playerid, pdata[playerid][name], MAX_PLAYER_NAME); // Getting the player's name.
+	/* deprecated
 	new stringss[69];
 	format(stringss, 69, "id: %i ....corrupt b4 incre %i pdata", playerid, pdata[playerid][corrupt_check]);
  	SendClientMessageToAll(-1,stringss);
+	*/
+	DebugPrintEx(-1, debug_sql, "pdata[%d][corrupt_check] = %d", playerid, pdata[playerid][corrupt_check]);
 	
 	pdata[playerid][corrupt_check]+=1;
 
 	mysql_format(database, query, sizeof(query), "SELECT * FROM `pdata` WHERE `name` = '%e' LIMIT 1", pdata[playerid][name]);
+	/*
 	if(mysql_tquery(database, query, "OnPlayerDataCheck", "ii", playerid, pdata[playerid][corrupt_check])) SendClientMessageToAll(-1,"tquery was successful!");
 	else SendClientMessageToAll(-1,"tquery was unsuccessful!");
+	*/
+	if(mysql_tquery(database, query, "OnPlayerDataCheck", "ii", playerid, pdata[playerid][corrupt_check])) DebugPrint(-1, debug_sql, "mysql_tquery was successful");
+	else DebugPrint(-1, debug_sql, "mysql_tquery was unsuccessful");
 }
 
 forward OnPlayerDataCheck(playerid, corrupt_checker);
@@ -51,14 +65,21 @@ public OnPlayerDataCheck(playerid, corrupt_checker){
 
     //if (corrupt_checker != pdata[playerid][corrupt_check]) return SendClientMessage(playerid,-1,"================>>>>ur ID is corrupt!!");
     if (corrupt_checker != pdata[playerid][corrupt_check]){
+		/*
         new stringsss[169];
         format(stringsss, 169, "query corrupted, discarding... id: (%i)  pdata:(%i) checker:(%i)", playerid, pdata[playerid][corrupt_check], corrupt_checker);
         SendClientMessageToAll(-1,stringsss);
+		*/
+		DebugPrintEx(-1, debug_sql, "query was corrupted, pdata[%d][corrupt_check] = %d, corrupt_checker = %d", playerid, pdata[playerid][corrupt_check], corrupt_checker);
         return 1;
     }
+	new String[150];
+	/*
 	new String[150],strings3[169];
  	format(strings3, 169, "query clean, accepting... id: (%i)  pdata:(%i) checker:(%i)", playerid, pdata[playerid][corrupt_check], corrupt_checker);
  	SendClientMessageToAll(-1,strings3);
+	*/
+	DebugPrintEx(-1, debug_sql, "query was clean, pdata[%d][corrupt_check] = %d, corrupt_checker = %d", playerid, pdata[playerid][corrupt_check], corrupt_checker);
 	if(cache_num_rows() > 0){
 		cache_get_value(0, "pwhash", pdata[playerid][pwhash], 65);
 		cache_get_value(0, "pwsalt", pdata[playerid][pwsalt], 11);
@@ -79,7 +100,10 @@ public OnPlayerDataCheck(playerid, corrupt_checker){
 
 forward OnPlayerRegister(playerid);
 public OnPlayerRegister(playerid){
+	/*
 	SendClientMessage(playerid, 0x00FF00FF, "You are now registered and has been logged in.");
+	*/
+	ClientPrint(playerid, COLOR_MSG_SERVER, "You are now registered and logged in.");
     pdata[playerid][loggedin] = true;
     return 1;
 }

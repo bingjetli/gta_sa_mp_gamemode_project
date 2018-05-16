@@ -35,7 +35,7 @@ enum player_data_enum {
 
 new pdata[MAX_PLAYERS][player_data_enum];
 new player_connect_count;
-new const debug_general = 1;
+new const debug_general = 0;
 
 //this is where you includae your modules
 #include "./helper.pwn"
@@ -49,20 +49,28 @@ main(){
 }
 
 public OnPlayerConnect(playerid){
-	new player_name[MAX_PLAYER_NAME];
-
-	GetPlayerName(playerid, player_name, sizeof(player_name));
 	player_connect_count++;
-	ClientPrintEx(-1, -1, "%s connected to the server!", player_name);
 	DebugPrintEx(-1, debug_general, "OnPlayerConnect was called %d times!", player_connect_count);
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
+
+	ClientPrintEx(-1, COLOR_MSG_NETWORK, "%s connected to the server!", pdata[playerid][name]);
 	return 1;
 }
 
 public OnPlayerDisconnect(playerid, reason){
-
+	switch(reason){
+		case 0: {
+			ClientPrintEx(-1, COLOR_MSG_NETWORK, "%s lost connection to the server!", pdata[playerid][name]);
+		}
+		case 1: {
+			ClientPrintEx(-1, COLOR_MSG_NETWORK, "%s left the server!", pdata[playerid][name]);
+		}
+		case 2: {
+			ClientPrintEx(-1, COLOR_MSG_NETWORK, "%s was kicked/banned by the server!", pdata[playerid][name]);
+		}
+	}
 	return 1;
 }
 
@@ -75,9 +83,6 @@ public OnPlayerSpawn(playerid){
 }
 
 public OnPlayerDeath(playerid, killerid, reason){
-	ClientPrint(playerid, -1, "can i client print without using %%?");
-	ClientPrint(-1, -1, "everybody should see this message");
-	ClientPrintEx(playerid, -1, "death - playerid:%d, killerid:%d, reason:%d", playerid, killerid, reason);
    	return 1;
 }
 
@@ -115,10 +120,8 @@ public OnGameModeInit(){
 }
 
 public OnGameModeExit(){
-	
 	buildings_OnGameModeExit();
-	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
-	SendClientMessageToAll(-1, "gamemode exit successfully called");
+	ClientPrint(-1, COLOR_MSG_SERVER, "Gamemode Exited...");
 	return 1; //return 0 to prevent filterscripts from receiving the callback
 }
 
