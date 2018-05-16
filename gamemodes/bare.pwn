@@ -128,13 +128,12 @@ public OnGameModeExit(){
 }
 
 public OnWorldTimeTick(){
-	new string[25];
-	SendClientMessageToAll(-1, "world time ticking...");
+	new string[5];
 	for(new i; i < MAX_PLAYERS; i++){
 		if(IsPlayerConnected(i)){
-			format(string, sizeof(string), "current world time: %d:%d", (gettime()/600)%24, (gettime()/10)%60);
+			format(string, sizeof(string), "%2d:%2d", (gettime()/600)%24, (gettime()/10)%60);
 			SetPlayerTime(i, (gettime()/600)%24, (gettime()/10)%60);
-			GameTextForPlayer(i, string, 1000, 3);
+			GameTextForPlayer(i, string, 8000, 1);
 		}
 	}
 }
