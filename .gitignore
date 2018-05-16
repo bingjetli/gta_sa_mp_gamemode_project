@@ -1,3 +1,5 @@
 pawno/settings.ini
 *~
 *.swp
+gamemodes/bare.pwn
+gamemodes/clientprint.pwn
