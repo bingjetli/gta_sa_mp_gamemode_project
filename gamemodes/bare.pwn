@@ -50,12 +50,10 @@ new player_connect_count;
 
 public OnPlayerConnect(playerid){
 	new player_name[MAX_PLAYER_NAME];
-	new string2[69];
 
 	GetPlayerName(playerid, player_name, sizeof(player_name));
 	player_connect_count++;
-	format(string2,69,"%s connected to the server! #%d", player_name, player_connect_count);
-	SendClientMessageToAll(-1,string2);
+	ClientPrintEx(-1, -1, "%s connected to the server! #%d", player_name, player_connect_count);
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
