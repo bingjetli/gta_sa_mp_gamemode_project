@@ -35,7 +35,7 @@ enum player_data_enum {
 
 new pdata[MAX_PLAYERS][player_data_enum];
 new player_connect_count;
-new debug_general = 0;
+new const debug_general = 1;
 
 //this is where you includae your modules
 #include "./helper.pwn"
@@ -54,7 +54,7 @@ public OnPlayerConnect(playerid){
 	GetPlayerName(playerid, player_name, sizeof(player_name));
 	player_connect_count++;
 	ClientPrintEx(-1, -1, "%s connected to the server!", player_name);
-	DebugPrintEx(-1, debug_general, "OnPlayerConnect was called %d times!", player_connect_count)
+	DebugPrintEx(-1, debug_general, "OnPlayerConnect was called %d times!", player_connect_count);
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
