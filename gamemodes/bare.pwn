@@ -35,7 +35,7 @@ enum player_data_enum {
 
 new pdata[MAX_PLAYERS][player_data_enum];
 new player_connect_count;
-new const debug_general = 0;
+new debug_general = 0;
 
 //this is where you includae your modules
 #include "./helper.pwn"
