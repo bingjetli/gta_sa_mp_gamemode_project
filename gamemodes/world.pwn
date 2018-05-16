@@ -17,6 +17,7 @@ stock world_OnGameModeExit(){
 }
 
 public world_OnTick(){
+	DebugPrint(-1, debug_world, "world tick");
 	for(new i; i<MAX_PLAYERS; i++){
 		if(IsPlayerConnected(i) && GetPlayerState(i) == PLAYER_STATE_SPAWNED){
 			SetPlayerTime(i, (gettime()/600)%24, (gettime()/10)%60);
