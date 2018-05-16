@@ -77,7 +77,7 @@ public OnPlayerSpawn(playerid){
 }
 
 public OnPlayerDeath(playerid, killerid, reason){
-	ClientPrint(playerid, -1, "death - playerid:%d, killerid:%d, reason:%d", playerid, killerid, reason);
+	ClientPrint(playerid, -1, "death - playerid:%d, killerid:%d, reason:%d", 1, 2, 3);
    	return 1;
 }
 
