@@ -2,6 +2,7 @@
 
 #undef MAX_PLAYERS
 #define MAX_PLAYERS 50
+#define ClientPrint(%0,%1,%2,%3) format(clientPrint_string, sizeof(clientPrint_string), %2, %3); SendClientMessage(%0, %1, %2)
 
 #include <Pawn.CMD>
 #include <sscanf2>
@@ -34,7 +35,7 @@ enum player_data_enum {
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];
-
+new clientPrint_string[128];
 
 //this is where you includae your modules
 #include "./buildings.pwn"
@@ -76,6 +77,7 @@ public OnPlayerSpawn(playerid){
 }
 
 public OnPlayerDeath(playerid, killerid, reason){
+	ClientPrint(playerid, -1, "death - playerid:%d, killerid:%d, reason:%d", playerid, killerid, reason);
    	return 1;
 }
 
