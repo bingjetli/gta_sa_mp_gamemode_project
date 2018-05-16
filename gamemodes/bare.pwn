@@ -36,9 +36,7 @@ enum player_data_enum {
 new pdata[MAX_PLAYERS][player_data_enum];
 
 
-/*
-* load modules
-*/
+//this is where you includae your modules
 #include "./clientprint.pwn"
 #include "./buildings.pwn"
 #include "./commands.pwn"
@@ -49,10 +47,20 @@ main(){
 	print("gamemode started...");
 }
 
+new player_connect_count;
+
 public OnPlayerConnect(playerid){
+	new player_name[MAX_PLAYER_NAME];
+	new string2[69];
+
+	GetPlayerName(playerid, player_name, sizeof(player_name));
+	player_connect_count++;
+	format(string2,69,"%s connected to the server! #%d", player_name, player_connect_count);
+	SendClientMessageToAll(-1,string2);
+
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
-	//deprecated: clientPrint_OnPlayerConnect(playerid);
+	clientPrint_OnPlayerConnect(playerid);
 	return 1;
 }
 
@@ -62,10 +70,6 @@ public OnPlayerDisconnect(playerid, reason){
 }
 
 public OnPlayerSpawn(playerid){
-	/*
-	* regarding the time, every 10 seconds is a minute, and every 600seconds is an hour
-	*/
-	SetPlayerTime(playerid, (gettime()/600)%24, (gettime()/10)%60);
 	SetPlayerPos(playerid, -1753.7196, 884.7693, 295.8750);
 	SetPlayerFacingAngle(playerid, 6.6817);
 	SetCameraBehindPlayer(playerid);
@@ -97,6 +101,7 @@ public OnPlayerPickUpPickup(playerid, pickupid){
 }
 
 public OnGameModeInit(){
+	player_connect_count = 0;
 	sequel_Init();
 	buildings_OnGameModeInit();
 
