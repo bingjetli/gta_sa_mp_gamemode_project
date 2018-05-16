@@ -128,7 +128,7 @@ public OnGameModeExit(){
 }
 
 public OnWorldTimeTick(){
-	new string[8];
+	new string[5];
 	for(new i; i < MAX_PLAYERS; i++){
 		if(IsPlayerConnected(i)){
 			format(string, sizeof(string), "%2d:%2d", (gettime()/600)%24, (gettime()/10)%60);
