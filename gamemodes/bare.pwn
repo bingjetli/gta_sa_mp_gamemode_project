@@ -143,4 +143,5 @@ public OnWorldTimeTick(){
 			GameTextForPlayer(i, string, 8000, 1);
 		}
 	}
+	return 1;
 }
