@@ -76,6 +76,7 @@ public OnPlayerDisconnect(playerid, reason){
 }
 
 public OnPlayerSpawn(playerid){
+	world_OnPlayerSpawn(playerid);
 	SetPlayerPos(playerid, -1753.7196, 884.7693, 295.8750);
 	SetPlayerFacingAngle(playerid, 6.6817);
 	SetCameraBehindPlayer(playerid);
@@ -84,6 +85,7 @@ public OnPlayerSpawn(playerid){
 }
 
 public OnPlayerDeath(playerid, killerid, reason){
+	world_OnPlayerDeath(playerid, killerid, reason);
    	return 1;
 }
 
@@ -93,7 +95,7 @@ SetupPlayerForClassSelection(playerid){
 	SetPlayerCameraPos(playerid, -1754.3840, 890.7601, 296.6267);
 	SetPlayerCameraLookAt(playerid, -1753.7196, 884.7693, 295.8750);
 	SetPlayerTime(playerid, 0, 0);
-	SetPlayerWeather(playerid, 3);
+	SetPlayerWeather(playerid, 18);
 }
 
 public OnPlayerRequestClass(playerid, classid){
