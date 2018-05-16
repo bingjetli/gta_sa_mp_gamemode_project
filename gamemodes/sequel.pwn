@@ -10,7 +10,7 @@ new MySQL:database;
 * this interaction only works with global static variables
 * static normally makes a variable retain it's value within a function
 */
-static const debug_sql = 1; 
+static const debug_sql = 0; 
 
 sequel_Init(){
 	mysql_log(ALL);

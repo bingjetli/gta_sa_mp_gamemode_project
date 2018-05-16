@@ -33,9 +33,9 @@ enum player_data_enum {
 	Cache:player_cache
 };
 
+new const debug_general = 0;
 new pdata[MAX_PLAYERS][player_data_enum];
 new player_connect_count;
-new const debug_general = 0;
 
 //this is where you includae your modules
 #include "./helper.pwn"
@@ -43,6 +43,7 @@ new const debug_general = 0;
 #include "./commands.pwn"
 #include "./sequel.pwn"
 #include "./dialogs.pwn"
+#include "./world.pwn"
 
 main(){
 	print("gamemode started...");
@@ -109,6 +110,7 @@ public OnGameModeInit(){
 	player_connect_count = 0;
 	sequel_Init();
 	buildings_OnGameModeInit();
+	world_OnGameModeInit();
 
     UsePlayerPedAnims();
 	SetGameModeText("sfrpg");
@@ -121,6 +123,7 @@ public OnGameModeInit(){
 
 public OnGameModeExit(){
 	buildings_OnGameModeExit();
+	world_OnGameModeExit();
 	ClientPrint(-1, COLOR_MSG_SERVER, "Gamemode Exited...");
 	return 1; //return 0 to prevent filterscripts from receiving the callback
 }
