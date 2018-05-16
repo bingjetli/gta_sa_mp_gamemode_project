@@ -2,7 +2,8 @@
 
 #undef MAX_PLAYERS
 #define MAX_PLAYERS 50
-#define ClientPrint(%0,%1,%2,%3) format(clientPrint_string, sizeof(clientPrint_string), %2, %3); SendClientMessage(%0, %1, clientPrint_string)
+#define ClientPrintEx(%0,%1,%2,%3) format(clientPrint_string, sizeof(clientPrint_string), %2, %3); SendClientMessage(%0, %1, clientPrint_string)
+#define ClientPrint(%0,%1,%2) if(%0 == -1) SendClientMessage(%0, %1, %2); else SendClientMessageToAll(%1, %2)
 
 #include <Pawn.CMD>
 #include <sscanf2>
@@ -77,7 +78,9 @@ public OnPlayerSpawn(playerid){
 }
 
 public OnPlayerDeath(playerid, killerid, reason){
-	ClientPrint(playerid, -1, "death - playerid:%d, killerid:%d, reason:%d", playerid, killerid, reason);
+	ClientPrint(playerid, -1, "can i client print without using %%?");
+	ClientPrint(-1, -1, "everybody should see this message");
+	ClientPrintEx(playerid, -1, "death - playerid:%d, killerid:%d, reason:%d", playerid, killerid, reason);
    	return 1;
 }
 
