@@ -37,6 +37,7 @@ new pdata[MAX_PLAYERS][player_data_enum];
 
 
 //this is where you includae your modules
+#include "./clientprint.pwn"
 #include "./buildings.pwn"
 #include "./commands.pwn"
 #include "./sequel.pwn"
@@ -59,6 +60,7 @@ public OnPlayerConnect(playerid){
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
+	clientPrint_OnPlayerConnect(playerid);
 	return 1;
 }
 
