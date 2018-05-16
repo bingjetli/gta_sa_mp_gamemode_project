@@ -2,6 +2,7 @@
 
 #undef MAX_PLAYERS
 #define MAX_PLAYERS 50
+#define WORLD_TIME_TICK_RATE 10000 //ms
 
 #include <Pawn.CMD>
 #include <sscanf2>
@@ -33,8 +34,16 @@ enum player_data_enum {
 	Cache:player_cache
 };
 
+/*
+* global variables
+*/
 new pdata[MAX_PLAYERS][player_data_enum];
+new timer_worldtime;
 
+/*
+* function forwards
+*/
+forward OnWorldTimeTick();
 
 /*
 * load modules
@@ -49,6 +58,9 @@ main(){
 	print("gamemode started...");
 }
 
+/*
+* server callbacks
+*/
 public OnPlayerConnect(playerid){
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
@@ -62,10 +74,6 @@ public OnPlayerDisconnect(playerid, reason){
 }
 
 public OnPlayerSpawn(playerid){
-	/*
-	* regarding the time, every 10 seconds is a minute, and every 600seconds is an hour
-	*/
-	SetPlayerTime(playerid, (gettime()/600)%24, (gettime()/10)%60);
 	SetPlayerPos(playerid, -1753.7196, 884.7693, 295.8750);
 	SetPlayerFacingAngle(playerid, 6.6817);
 	SetCameraBehindPlayer(playerid);
@@ -103,6 +111,7 @@ public OnGameModeInit(){
     UsePlayerPedAnims();
 	SetGameModeText("sfrpg");
 	ShowPlayerMarkers(1);
+	timer_worldtime = SetTimer("OnWorldTimeTick", WORLD_TIME_TICK_RATE, true);
 
 	AddPlayerClass(265,1958.3783,1343.1572,15.3746,270.1425,0,0,0,0,-1,-1);
 
@@ -113,8 +122,15 @@ public OnGameModeExit(){
 	
 	buildings_OnGameModeExit();
 	//set timer for 5 seconds to see if it waits for gamemodeexit to finish calling
+	KillTimer(timer_worldtime);
 	SendClientMessageToAll(-1, "gamemode exit successfully called");
 	return 1; //return 0 to prevent filterscripts from receiving the callback
 }
 
-
+public OnWorldTimeTick(){
+	for(new i; i < MAX_PLAYERS; i++){
+		if(IsPlayerConnected(i) && GetPlayerState(i) == PLAYER_STATE_SPAWNED){
+			SetPlayerTime(i, (gettime()/600)%24, (gettime()/10)%60);
+		}
+	}
+}
