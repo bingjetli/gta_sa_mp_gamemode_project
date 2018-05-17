@@ -1,7 +1,9 @@
+/*
 cmd:bigdick(playerid, params[]){
 	SendClientMessageToAll(0xFFFFFF,"bigdick");
     return 1;
 }
+*/
 
 cmd:tp(playerid, params[]){
 	new Float:x, Float:y, Float:z;
@@ -14,13 +16,18 @@ cmd:tp(playerid, params[]){
 	SetPlayerPos(1, x,y,z+2);
 	return 1;
 }
+/*
 alias:bigdick("dickbig", "biggus", "dickus"); //as many as you want
+*/
 alias:gmx("exit","reset","restart");
 
 cmd:gmx(playerid, params[]){
 	sequel_Exit();
 	SetTimer("gmxxing",5000,false);
+	/*
 	SendClientMessageToAll(-1,"server gmx in 5 secs!!");
+	*/
+	ClientPrint(-1, COLOR_MSG_SERVER, "Restarting server in 5 seconds...");
 	return 1;
 }
 
