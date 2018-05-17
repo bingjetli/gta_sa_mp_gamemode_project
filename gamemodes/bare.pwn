@@ -1,12 +1,12 @@
 #include <a_samp>
-//#include <fixes>
+#include <fixes>
 //========================================|
 #include <a_mysql>
 #include <sscanf2>
 #include <foreach>
 #include <Pawn.CMD>
 #include <easyDialog>
-//#include <timerfix>
+#include <timerfix>
 //========================================|
 #include "./players.pwn"
 #include "./helper.pwn"
