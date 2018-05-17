@@ -2,7 +2,7 @@
 
 combat_OnPlayerConnect(playerid){
 	pdata[playerid][nametag]=CreateDynamic3DTextLabel("Namgtag Error", 0xFFFFFFFF, 0.0, 0.0, 0.1, nametag_render_distance, playerid, 1);
-	SetTimerEx("UpdateNametag",200,true,"%d",playerid);
+	pdata[playerid][nametagtimer]=SetTimerEx("UpdateNametag",200,true,"%d",playerid);
 }
 
 combat_OnPlayerDisconnect(playerid){
