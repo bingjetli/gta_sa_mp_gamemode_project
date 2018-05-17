@@ -1,5 +1,5 @@
 #include <a_samp>
-#include <fixes>
+//#include <fixes>
 //========================================|
 #include <a_mysql>
 #include <sscanf2>
