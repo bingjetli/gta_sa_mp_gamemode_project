@@ -10,56 +10,15 @@
 #include <foreach>
 #include <fixes2>
 
-
-enum player_data_enum{
-	db_id,                      //db
-	name[25],                   //db
-	pwhash[65],                 //db
-	pwsalt[11],                 //db
-	pwfails,
-	kills,                      //db
-	deaths,                     //db
-	bool:loggedin,
-	bool:shadowbanned,          //db
-	cash,                       //db
-	bankmoney,                  //db
-	health,                     //db
-	armor,                      //db
-	timezone,                   //db
-	ip[16],                     //db
-	autologin,                  //db
-	adminlevel,                 //db
-	corrupt_check,
-	Cache:player_cache,
-	PlayerText3D:nametag
-};
-
 enum server_data_enum{
 	server_timezone,
 	robbers_over_cops
 
 };
 
-enum weapons_id_enum{
-	minigun,
-	flamethrower
-};
-
-enum weapons_data_enum{
-	damage,
-	name[25],
-	hitstun
-	
-};
-
-new wdata[weapons_id_enum][weapons_data_enum];
-
-
 new const debug_general = 0;
-new pdata[MAX_PLAYERS][player_data_enum];
-new player_connect_count;
 
-//this is where you includae your modules
+#include "./players.pwn"
 #include "./helper.pwn"
 #include "./buildings.pwn"
 #include "./commands.pwn"
@@ -68,6 +27,8 @@ new player_connect_count;
 #include "./world.pwn"
 #include "./healthbar.pwn"
 #include "./weapons.pwn"
+//#include "./.pwn"
+//#include "./.pwn"
 //#include "./.pwn"
 
 main(){
