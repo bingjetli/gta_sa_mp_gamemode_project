@@ -79,7 +79,10 @@ Dialog:register_dialog(playerid, response, listitem, inputtext[]){
 	/*
 	if(!response) return SendClientMessage(playerid,-1,"Warning: You are now playing as a 'guest'. Your in-game progress will not be saved if you leave the game without registering!");
 	*/
-	if(!response) ClientPrint(playerid, COLOR_MSG_SERVER, "You are now playing as a guest, your in-game progress will not be saved if you leave the game without registering.");
+	if(!response){
+		ClientPrint(playerid, COLOR_MSG_SERVER, "You are now playing as a guest, your in-game progress will not be saved if you leave the game without registering.");
+		return 1;
+	}
 	if(strlen(inputtext) <= 5 || strlen(inputtext) > 60){
 		/*
 		SendClientMessage(playerid, 0x969696FF, "Invalid password length, should be 5 - 60.");
