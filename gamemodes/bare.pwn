@@ -49,6 +49,32 @@ main(){
 	print("gamemode started...");
 }
 
+public OnGameModeInit(){
+	player_connect_count = 0;
+	sequel_Init();
+	buildings_OnGameModeInit();
+	world_OnGameModeInit();
+
+    UsePlayerPedAnims();
+    ShowNameTags(0);
+	SetGameModeText("sfrpg");
+	ShowPlayerMarkers(1);
+
+	AddPlayerClass(265,1958.3783,1343.1572,15.3746,270.1425,0,0,0,0,-1,-1);
+
+
+
+	return 1; //return 0 to prevent filterscripts from receiving the callback
+}
+
+public OnGameModeExit(){
+	buildings_OnGameModeExit();
+	world_OnGameModeExit();
+	ClientPrint(-1, COLOR_MSG_SERVER, "Gamemode Exited...");
+	return 1; //return 0 to prevent filterscripts from receiving the callback
+}
+
+
 public OnPlayerConnect(playerid){
 	player_connect_count++;
 	DebugPrintEx(-1, debug_general, "OnPlayerConnect was called %d times!", player_connect_count);
@@ -107,27 +133,4 @@ public OnPlayerPickUpPickup(playerid, pickupid){
 	buildings_OnPlayerPickUpPickup(playerid, pickupid);
 	return 1;
 }
-
-public OnGameModeInit(){
-	player_connect_count = 0;
-	sequel_Init();
-	buildings_OnGameModeInit();
-	world_OnGameModeInit();
-
-    UsePlayerPedAnims();
-	SetGameModeText("sfrpg");
-	ShowPlayerMarkers(1);
-
-	AddPlayerClass(265,1958.3783,1343.1572,15.3746,270.1425,0,0,0,0,-1,-1);
-
-	return 1; //return 0 to prevent filterscripts from receiving the callback
-}
-
-public OnGameModeExit(){
-	buildings_OnGameModeExit();
-	world_OnGameModeExit();
-	ClientPrint(-1, COLOR_MSG_SERVER, "Gamemode Exited...");
-	return 1; //return 0 to prevent filterscripts from receiving the callback
-}
-
 
