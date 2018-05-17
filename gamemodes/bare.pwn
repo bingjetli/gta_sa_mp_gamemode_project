@@ -18,6 +18,7 @@
 #include "./world.pwn"
 #include "./healthbar.pwn"
 #include "./weapons.pwn"
+#include "./zones.pwn"
 //#include "./.pwn"
 //#include "./.pwn"
 //#include "./.pwn"
@@ -49,6 +50,7 @@ public OnGameModeInit(){
 	sequel_Init();
 	buildings_OnGameModeInit();
 	world_OnGameModeInit();
+	zones_OnGameModeInit();
 
     UsePlayerPedAnims();
     ShowNameTags(0);
@@ -73,6 +75,7 @@ public OnPlayerConnect(playerid){
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
+	zones_OnPlayerConnect(playerid);
 
 	ClientPrintEx(-1, COLOR_MSG_NETWORK, "%s connected to the server!", pdata[playerid][name]);
 	return 1;
