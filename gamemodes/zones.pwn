@@ -481,9 +481,9 @@ stock zones_OnGameModeInit(){
 }
 
 stock zones_OnPlayerConnect(playerid){
-	textdraw_zone_name[playerid] = CreatePlayerTextDraw(playerid, 86.0, 426.0, "current zone");
+	textdraw_zone_name[playerid] = CreatePlayerTextDraw(playerid, 85.0, 430.0, "current zone");
 	PlayerTextDrawAlignment(playerid, textdraw_zone_name[playerid], 2);
-	PlayerTextDrawFont(playerid, textdraw_zone_name[playerid], 3);
+	PlayerTextDrawFont(playerid, textdraw_zone_name[playerid], 0);
 	//PlayerTextDrawTextSize(playerid, textdraw_zone_name[playerid], 2.0, 1.0);
 	PlayerTextDrawSetShadow(playerid, textdraw_zone_name[playerid], 0);
 	PlayerTextDrawSetOutline(playerid, textdraw_zone_name[playerid], 1);
