@@ -16,8 +16,7 @@
 #include "./sequel.pwn"
 #include "./dialogs.pwn"
 #include "./world.pwn"
-#include "./healthbar.pwn"
-#include "./weapons.pwn"
+#include "./combat.pwn"
 #include "./zones.pwn"
 //#include "./.pwn"
 //#include "./.pwn"
@@ -38,8 +37,6 @@ enum server_data_enum{
 new sdata[server_data_enum];
 //========================================|
 main(){}
-//	print("ughh");
-//}
 /*
 |-----------------------------------------|
 |-----------------------------------------|
