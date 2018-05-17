@@ -8,19 +8,6 @@
 #include <easyDialog>
 #include <timerfix>
 //========================================|
-#include "./players.pwn"
-#include "./helper.pwn"
-#include "./buildings.pwn"
-#include "./commands.pwn"
-#include "./sequel.pwn"
-#include "./dialogs.pwn"
-#include "./world.pwn"
-#include "./combat.pwn"
-#include "./zones.pwn"
-//#include "./.pwn"
-//#include "./.pwn"
-//#include "./.pwn"
-//========================================|
 #undef MAX_PLAYERS
 #define MAX_PLAYERS 50
 //#define
@@ -33,6 +20,19 @@ enum server_data_enum{
 	debug_general
 };
 new sdata[server_data_enum];
+//========================================|
+#include "./players.pwn"
+#include "./helper.pwn"
+#include "./buildings.pwn"
+#include "./commands.pwn"
+#include "./sequel.pwn"
+#include "./dialogs.pwn"
+#include "./world.pwn"
+#include "./combat.pwn"
+#include "./zones.pwn"
+//#include "./.pwn"
+//#include "./.pwn"
+//#include "./.pwn"
 //========================================|
 main(){}
 /*
