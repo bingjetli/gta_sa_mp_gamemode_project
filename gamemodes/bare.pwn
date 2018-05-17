@@ -1,5 +1,46 @@
-#include "./server.pwn"
+#include <a_samp>
+//========================================|
+#include <Pawn.CMD>
+#include <sscanf2>
+#include <a_mysql>
+#include <easyDialog>
+#include <foreach>
+#include <fixes2>
+//#include <>
+//#include <>
+//========================================|
+#include "./players.pwn"
+#include "./helper.pwn"
+#include "./buildings.pwn"
+#include "./commands.pwn"
+#include "./sequel.pwn"
+#include "./dialogs.pwn"
+#include "./world.pwn"
+#include "./healthbar.pwn"
+#include "./weapons.pwn"
+//#include "./.pwn"
+//#include "./.pwn"
+//#include "./.pwn"
+//========================================|
+#undef MAX_PLAYERS
+#define MAX_PLAYERS 50
+//#define
+//#define
+//========================================|
+enum server_data_enum{
+	server_timezone,
+	robbers_over_cops,
 
+};
+//========================================|
+new player_connect_count;
+new const debug_general = 0;
+//========================================|
+main(){}
+/*
+|-----------------------------------------|
+|-----------------------------------------|
+*/
 public OnGameModeInit(){
 	weapons_AssignName();
 	weapons_AssignDamage();
@@ -15,8 +56,6 @@ public OnGameModeInit(){
 	ShowPlayerMarkers(1);
 
 	AddPlayerClass(265,1958.3783,1343.1572,15.3746,270.1425,0,0,0,0,-1,-1);
-
-
 
 	return 1; //return 0 to prevent filterscripts from receiving the callback
 }

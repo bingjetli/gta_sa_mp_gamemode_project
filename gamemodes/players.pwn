@@ -22,5 +22,3 @@ enum player_data_enum{
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];
-
-new player_connect_count;
