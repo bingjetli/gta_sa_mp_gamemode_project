@@ -11,7 +11,7 @@
 #include <fixes2>
 
 
-enum player_data_enum {
+enum player_data_enum{
 	db_id,                      //db
 	name[25],                   //db
 	pwhash[65],                 //db
@@ -30,8 +30,30 @@ enum player_data_enum {
 	autologin,                  //db
 	adminlevel,                 //db
 	corrupt_check,
-	Cache:player_cache
+	Cache:player_cache,
+	PlayerText3D:nametag
 };
+
+enum server_data_enum{
+	server_timezone,
+	robbers_over_cops
+
+};
+
+enum weapons_id_enum{
+	minigun,
+	flamethrower
+};
+
+enum weapons_data_enum{
+	damage,
+	name[25],
+	hitstun
+	
+};
+
+new wdata[weapons_id_enum][weapons_data_enum];
+
 
 new const debug_general = 0;
 new pdata[MAX_PLAYERS][player_data_enum];
@@ -44,12 +66,18 @@ new player_connect_count;
 #include "./sequel.pwn"
 #include "./dialogs.pwn"
 #include "./world.pwn"
+#include "./healthbar.pwn"
+#include "./weapons.pwn"
+//#include "./.pwn"
 
 main(){
 	print("gamemode started...");
 }
 
 public OnGameModeInit(){
+	weapons_AssignName();
+	weapons_AssignDamage();
+ 	
 	player_connect_count = 0;
 	sequel_Init();
 	buildings_OnGameModeInit();
