@@ -4,16 +4,21 @@
 * time is based on gettime() unix time stamp
 * game time is accelerated to give the players a sense of a living world
 * time is accelerated as follows: 
+*	DEFAULT VALUES
 *	1 game minute = 10 seconds
 *	1 game hour = 600 seconds  (10 minutes)
 *   1 game day = 14400 seconds (4 hours)
+* alternative timescaling:
+*	72 minute gameday
+*	48 minute gameday
+*	24 minute gameday
 * weather changes randomly and can last for up to 24 game hours
 */
-#define WORLD_TICK_RATE 10000 //ms
-#define WORLD_MINUTE 10 //seconds
-#define WORLD_HOUR 600 //seconds
+#define WORLD_TICK_RATE 60000 //ms
+#define WORLD_MINUTE 1 //seconds
+#define WORLD_HOUR 60 //seconds
 
-static const debug_world = 0;
+static const debug_world = 1;
 //static timer_worldtime;
 static const world_weatherids[] = {0,2,3,7,8,9,11,12,13,17,18,19};
 static world_weather = 0;
