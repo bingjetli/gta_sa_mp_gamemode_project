@@ -6,7 +6,7 @@
 #include <foreach>
 #include <Pawn.CMD>
 #include <easyDialog>
-#include <timerfix>
+//#include <timerfix>
 //========================================|
 #include "./players.pwn"
 #include "./helper.pwn"
