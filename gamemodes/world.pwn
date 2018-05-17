@@ -18,7 +18,7 @@
 #define WORLD_MINUTE 1 //seconds
 #define WORLD_HOUR 60 //seconds
 
-static const debug_world = 1;
+static const debug_world = 0;
 //static timer_worldtime;
 static const world_weatherids[] = {0,2,3,7,8,9,11,12,13,17,18,19};
 static world_weather = 0;
