@@ -36,9 +36,9 @@ enum server_data_enum{
 };
 new sdata[server_data_enum];
 //========================================|
-main(){
-	print("ughh");
-}
+main(){}
+//	print("ughh");
+//}
 /*
 |-----------------------------------------|
 |-----------------------------------------|
@@ -71,7 +71,7 @@ public OnGameModeExit(){
 
 public OnPlayerConnect(playerid){
 	sdata[player_connect_count]++;
-	DebugPrintEx(-1, sdata[debug_general], "OnPlayerConnect was called %d times!", player_connect_count);
+	DebugPrintEx(-1, sdata[debug_general], "OnPlayerConnect was called %d times!", sdata[player_connect_count]);
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
