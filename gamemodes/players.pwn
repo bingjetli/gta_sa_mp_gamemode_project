@@ -18,7 +18,8 @@ enum player_data_enum{
 	adminlevel,                 //db
 	corrupt_check,
 	Cache:player_cache,
-	PlayerText3D:nametag
+	Text3D:nametag,
+	nametagtimer
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];

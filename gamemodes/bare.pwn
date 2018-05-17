@@ -6,7 +6,7 @@
 #include <easyDialog>
 #include <foreach>
 #include <fixes2>
-//#include <>
+#include <streamer>
 //#include <>
 //========================================|
 #include "./players.pwn"
@@ -50,7 +50,7 @@ public OnGameModeInit(){
 	buildings_OnGameModeInit();
 	world_OnGameModeInit();
 	zones_OnGameModeInit();
-
+    
     UsePlayerPedAnims();
     ShowNameTags(0);
 	SetGameModeText("sfrpg");
@@ -75,7 +75,8 @@ public OnPlayerConnect(playerid){
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
 	zones_OnPlayerConnect(playerid);
-
+    combat_OnPlayerConnect(playerid);
+    
 	ClientPrintEx(-1, COLOR_MSG_NETWORK, "%s connected to the server!", pdata[playerid][name]);
 	return 1;
 }
@@ -92,6 +93,10 @@ public OnPlayerDisconnect(playerid, reason){
 			ClientPrintEx(-1, COLOR_MSG_NETWORK, "%s was kicked/banned by the server!", pdata[playerid][name]);
 		}
 	}
+
+	combat_OnPlayerDisconnect(playerid);
+	
+	
 	return 1;
 }
 
