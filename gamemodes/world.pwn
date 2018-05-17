@@ -45,6 +45,8 @@ stock world_OnPlayerSpawn(playerid){
 }
 
 stock world_OnPlayerDeath(playerid, killerid, reason){
+	#pragma unused killerid
+	#pragma unused reason
 	SetPlayerWeather(playerid, 21);
 	SetPlayerTime(playerid, 7, 0);
 }

@@ -487,7 +487,7 @@ stock zones_OnPlayerConnect(playerid){
 	//PlayerTextDrawTextSize(playerid, textdraw_zone_name[playerid], 2.0, 1.0);
 	PlayerTextDrawSetShadow(playerid, textdraw_zone_name[playerid], 0);
 	PlayerTextDrawSetOutline(playerid, textdraw_zone_name[playerid], 1);
-	PlayerTextDrawLetterSize(playerid, textdraw_zone_name[playerid], 0.2, 1);
+	PlayerTextDrawLetterSize(playerid, textdraw_zone_name[playerid], 0.4, 1.5);
 	PlayerTextDrawShow(playerid, textdraw_zone_name[playerid]);
 	return 1;
 }
