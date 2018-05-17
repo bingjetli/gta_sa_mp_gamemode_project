@@ -19,7 +19,8 @@ enum player_data_enum{
 	corrupt_check,
 	Cache:player_cache,
 	Text3D:nametag,
-	nametagtimer
+	nametagtimer,
+	afktime
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];

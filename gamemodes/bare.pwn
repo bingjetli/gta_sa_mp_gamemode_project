@@ -5,8 +5,7 @@
 #include <a_mysql>
 #include <easyDialog>
 #include <foreach>
-#include <fixes2>
-//#include <streamer>
+#include <streamer>
 //#include <>
 //========================================|
 #include "./players.pwn"
@@ -124,6 +123,11 @@ SetupPlayerForClassSelection(playerid){
 
 public OnPlayerRequestClass(playerid, classid){
 	SetupPlayerForClassSelection(playerid);
+	return 1;
+}
+
+public OnPlayerUpdate(playerid){
+	pdata[playerid][afktime]=0;
 	return 1;
 }
 
