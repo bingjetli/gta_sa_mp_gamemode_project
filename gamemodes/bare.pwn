@@ -30,11 +30,11 @@
 enum server_data_enum{
 	server_timezone,
 	robbers_over_cops,
+	player_connect_count,
+	debug_general,
 
 };
-//========================================|
-new player_connect_count;
-new const debug_general = 0;
+new sdata[server_data_enum];
 //========================================|
 main(){}
 /*
@@ -44,8 +44,8 @@ main(){}
 public OnGameModeInit(){
 	weapons_AssignName();
 	weapons_AssignDamage();
- 	
-	player_connect_count = 0;
+ 	sdata[debug_general]=1;
+	sdata[player_connect_count] = 0;
 	sequel_Init();
 	buildings_OnGameModeInit();
 	world_OnGameModeInit();
@@ -68,8 +68,8 @@ public OnGameModeExit(){
 }
 
 public OnPlayerConnect(playerid){
-	player_connect_count++;
-	DebugPrintEx(-1, debug_general, "OnPlayerConnect was called %d times!", player_connect_count);
+	sdata[player_connect_count]++;
+	DebugPrintEx(-1, sdata[debug_general], "OnPlayerConnect was called %d times!", player_connect_count);
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
