@@ -6,7 +6,7 @@
 #include <easyDialog>
 #include <foreach>
 #include <fixes2>
-#include <streamer>
+//#include <streamer>
 //#include <>
 //========================================|
 #include "./players.pwn"
@@ -31,8 +31,7 @@ enum server_data_enum{
 	server_timezone,
 	robbers_over_cops,
 	player_connect_count,
-	debug_general,
-
+	debug_general
 };
 new sdata[server_data_enum];
 //========================================|

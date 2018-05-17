@@ -1,21 +1,20 @@
 #define nametag_render_distance 25.0
 
 combat_OnPlayerConnect(playerid){
-	pdata[playerid][nametag]=CreateDynamic3DTextLabel("Namgtag Error", 0xFFFFFFFF, 0.0, 0.0, 0.1, nametag_render_distance, playerid, 1);
+	pdata[playerid][nametag]=Create3DTextLabel("Namgtag Error", 0xFFFFFFFF, 0.0, 0.0, 0.0, nametag_render_distance, 0, 1);
+	Attach3DTextLabelToPlayer(pdata[playerid][nametag], playerid, 0.0, 0.0, 0.7);
 	pdata[playerid][nametagtimer]=SetTimerEx("UpdateNametag",200,true,"%d",playerid);
 }
 
 combat_OnPlayerDisconnect(playerid){
-    if(IsValidDynamic3DTextLabel(pdata[playerid][nametag])){
-    	DestroyDynamic3DTextLabel(pdata[playerid][nametag]);
-	}
+	Delete3DTextLabel(pdata[playerid][nametag]);
 	KillTimer(pdata[playerid][nametagtimer]);
 }
 
 forward UpdateNametag(playerid);
 public UpdateNametag(playerid){
 
-	UpdateDynamic3DTextLabelText(pdata[playerid][nametag], 0xFFFFFFFF, "bigdick");
+	Update3DTextLabelText(pdata[playerid][nametag], 0xFFFFFFFF, "bigdick");
 }
 
 
