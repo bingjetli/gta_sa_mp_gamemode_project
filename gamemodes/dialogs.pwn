@@ -44,7 +44,10 @@ Dialog:login_dialog(playerid, response, listitem, inputtext[]){
 		pdata[playerid][player_cache] = MYSQL_INVALID_CACHE;
 
 		pdata[playerid][loggedin] = true;
+		/*
 		SendClientMessage(playerid, 0x00FF00FF, "Logged in to the account.");
+		*/
+		ClientPrint(playerid, COLOR_MSG_SERVER, "Logged in to the account.");
 		return 1;
 	}
 	new String[150];
@@ -52,24 +55,36 @@ Dialog:login_dialog(playerid, response, listitem, inputtext[]){
 	pdata[playerid][pwfails]++;
 	printf("%s has been failed to login. (%d)", pdata[playerid][name], pdata[playerid][pwfails]);
 	if (pdata[playerid][pwfails] >= 3){ // If the fails exceeded the limit we kick the player.
+		/*
 		format(String, sizeof(String), "%s has been kicked Reason: {FF0000}(%d/3) Login fails.", pdata[playerid][name], pdata[playerid][pwfails]);
 		SendClientMessageToAll(0x969696FF, String);
+		*/
+		ClientPrintEx(-1, COLOR_MSG_SERVER, "%s has been kicked for exceeding their login attempts.", pdata[playerid][name]);
 		Kick(playerid);
 	}
 	else{
+		/*
 		format(String, sizeof(String), "Wrong password, you have %d out of 3 tries.", pdata[playerid][pwfails]);
 		SendClientMessage(playerid, 0xFF0000FF, String);
+		*/
 		format(String, sizeof(String), "{FFFFFF}Welcome back, %s.\n\n{0099FF}This name is already registered.\n\
 		{0099FF}Please login below, or proceed with a different name.\n\n", pdata[playerid][name]);
+		ClientPrintEx(playerid, COLOR_MSG_SERVER, "Incorrect password, you have %d attempts remaining.", pdata[playerid][pwfails]);
 		Dialog_Show(playerid, login_dialog, DIALOG_STYLE_PASSWORD, "Login System", String, "Login", "Change Name");
 	}
 	return 1;
 }
 
 Dialog:register_dialog(playerid, response, listitem, inputtext[]){
+	/*
 	if(!response) return SendClientMessage(playerid,-1,"Warning: You are now playing as a 'guest'. Your in-game progress will not be saved if you leave the game without registering!");
+	*/
+	if(!response) ClientPrint(playerid, COLOR_MSG_SERVER, "You are now playing as a guest, your in-game progress will not be saved if you leave the game without registering.");
 	if(strlen(inputtext) <= 5 || strlen(inputtext) > 60){
+		/*
 		SendClientMessage(playerid, 0x969696FF, "Invalid password length, should be 5 - 60.");
+		*/
+		ClientPrint(playerid, COLOR_MSG_SERVER, "Your password should be 5 to 60 characters long.");
 
 		new String[150];
 
