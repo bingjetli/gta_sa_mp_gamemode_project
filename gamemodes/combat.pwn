@@ -46,8 +46,57 @@ UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
 		}
 		if(healthp!=-2)SetPlayerHealth(playerid, healthp);
 	}
-	arbar="armor goes here";
-	format(ntstring,150,"%s\n%s\n%s",tname,hpbar,arbar);
+	if(armorp!=-1){
+ 		if(pdata[playerid][helmet]) switch (armorp){
+			case 96..100: arbar="{FFFFFF}\n";
+            case 91..95: arbar="{FFFFFF}{808080}\n";
+            case 86..90: arbar="{FFFFFF}{808080}\n";
+            case 81..85: arbar="{FFFFFF}{808080}\n";
+            case 76..80: arbar="{FFFFFF}{808080}\n";
+            case 71..75: arbar="{FFFFFF}{808080}\n";
+            case 66..70: arbar="{FFFFFF}{808080}\n";
+            case 61..65: arbar="{FFFFFF}{808080}\n";
+            case 56..60: arbar="{FFFFFF}{808080}\n";
+            case 51..55: arbar="{FFFFFF}{808080}\n";
+            case 46..50: arbar="{FFFFFF}{808080}\n";
+            case 41..45: arbar="{FFFFFF}{808080}\n";
+            case 36..40: arbar="{FFFFFF}{808080}\n";
+            case 31..35: arbar="{FFFFFF}{808080}\n";
+            case 26..30: arbar="{FFFFFF}{808080}\n";
+            case 21..25: arbar="{FFFFFF}{808080}\n";
+            case 16..20: arbar="{FFFFFF}{808080}\n";
+            case 11..15: arbar="{FFFFFF}{808080}\n";
+            case 6..10: arbar="{FFFFFF}{808080}\n";
+            case 1..5: arbar="{FFFFFF}{808080}\n";
+            case 0: arbar="";
+		}
+		else switch (armorp){
+			case 96..100: arbar="{D3D3D3}\n";
+            case 91..95: arbar="{D3D3D3}{808080}\n";
+            case 86..90: arbar="{D3D3D3}{808080}\n";
+            case 81..85: arbar="{D3D3D3}{808080}\n";
+            case 76..80: arbar="{D3D3D3}{808080}\n";
+            case 71..75: arbar="{D3D3D3}{808080}\n";
+            case 66..70: arbar="{D3D3D3}{808080}\n";
+            case 61..65: arbar="{D3D3D3}{808080}\n";
+            case 56..60: arbar="{D3D3D3}{808080}\n";
+            case 51..55: arbar="{D3D3D3}{808080}\n";
+            case 46..50: arbar="{D3D3D3}{808080}\n";
+            case 41..45: arbar="{D3D3D3}{808080}\n";
+            case 36..40: arbar="{D3D3D3}{808080}\n";
+            case 31..35: arbar="{D3D3D3}{808080}\n";
+            case 26..30: arbar="{D3D3D3}{808080}\n";
+            case 21..25: arbar="{D3D3D3}{808080}\n";
+            case 16..20: arbar="{D3D3D3}{808080}\n";
+            case 11..15: arbar="{D3D3D3}{808080}\n";
+            case 6..10: arbar="{D3D3D3}{808080}\n";
+            case 1..5: arbar="{D3D3D3}{808080}\n";
+            case 0: arbar="";
+		}
+		
+		SetPlayerArmour(playerid, armorp);
+	}
+	format(ntstring,150,"%s%s\n%s",tname,arbar,hpbar);
 	Update3DTextLabelText(pdata[playerid][nametag],GetPlayerColor(playerid),ntstring);
 }
 
