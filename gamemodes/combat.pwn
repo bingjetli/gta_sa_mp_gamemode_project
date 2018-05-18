@@ -15,7 +15,7 @@ forward UpdateNametag(playerid,healthp,armorp,afk);
 public UpdateNametag(playerid,healthp,armorp,afk){
 
 	//DebugPrintEx(-1, sdata[debug_general], "Update Nametag called for ID: %d ", playerid);
-	Update3DTextLabelText(pdata[playerid][nametag], 0xFFFFFFFF, "lllll\nIIIII\n\n|||||");
+	Update3DTextLabelText(pdata[playerid][nametag], 0xFFFFFFFF, "\n\n");
 
 
 }

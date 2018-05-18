@@ -1,6 +1,6 @@
 enum player_data_enum{
 	db_id,                      //db
-	name[25],                   //db
+	name[225],                   //db
 	pwhash[65],                 //db
 	pwsalt[11],                 //db
 	pwfails,
