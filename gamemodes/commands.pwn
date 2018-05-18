@@ -42,11 +42,6 @@ cmd:testtag(playerid, params[]){
 	return 1;
 }
 
-cmd:buyhelmet(playerid, params[]){
-	UpdateNametag(playerid, -1, -2);
-	return 1;
-}
-
 cmd:weapons(playerid, params[]){
     Dialog_Show(playerid, weaponsmenu, DIALOG_STYLE_LIST, "Weapon Menu", "9mm\nSilenced 9mm\nDesert Eagle\nShotgun\nSawn-off Shotgun\nCombat Shotgun", "Select", "Cancel");
     return 1;

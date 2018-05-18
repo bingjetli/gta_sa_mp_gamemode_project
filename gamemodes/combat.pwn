@@ -56,8 +56,8 @@ UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
 		if(healthp!=-2)SetPlayerHealth(playerid, healthp);
 	}
 	if(armorp!=-1){
-		if(armorp==-2) pdata[playerid][helmet]=1;
- 		if(pdata[playerid][helmet]) switch (armorp){
+  		//if(armorp==-2) pdata[playerid][helmet]=1;
+ 		switch (armorp){
 			case 96..100: arbar="{FFFFFF}\n";
             case 91..95: arbar="{FFFFFF}{808080}\n";
             case 86..90: arbar="{FFFFFF}{808080}\n";
@@ -80,29 +80,6 @@ UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
             case 1..5: arbar="{FFFFFF}{808080}\n";
             case 0: arbar="";
             case -2: arbar="{FFFFFF}\n";
-		}
-		else switch (armorp){
-			case 96..100: arbar="{D3D3D3}\n";
-            case 91..95: arbar="{D3D3D3}{808080}\n";
-            case 86..90: arbar="{D3D3D3}{808080}\n";
-            case 81..85: arbar="{D3D3D3}{808080}\n";
-            case 76..80: arbar="{D3D3D3}{808080}\n";
-            case 71..75: arbar="{D3D3D3}{808080}\n";
-            case 66..70: arbar="{D3D3D3}{808080}\n";
-            case 61..65: arbar="{D3D3D3}{808080}\n";
-            case 56..60: arbar="{D3D3D3}{808080}\n";
-            case 51..55: arbar="{D3D3D3}{808080}\n";
-            case 46..50: arbar="{D3D3D3}{808080}\n";
-            case 41..45: arbar="{D3D3D3}{808080}\n";
-            case 36..40: arbar="{D3D3D3}{808080}\n";
-            case 31..35: arbar="{D3D3D3}{808080}\n";
-            case 26..30: arbar="{D3D3D3}{808080}\n";
-            case 21..25: arbar="{D3D3D3}{808080}\n";
-            case 16..20: arbar="{D3D3D3}{808080}\n";
-            case 11..15: arbar="{D3D3D3}{808080}\n";
-            case 6..10: arbar="{D3D3D3}{808080}\n";
-            case 1..5: arbar="{D3D3D3}{808080}\n";
-            case 0: arbar="";
 		}
 		if(armorp!=-2)SetPlayerArmour(playerid, armorp);
 	}
