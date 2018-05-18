@@ -94,10 +94,12 @@ public statusfx_OnPlayerStatusFXTick(playerid){
 					DebugPrintEx(playerid, debug_statusfx, "BUFF_HP_REGEN: +5HP - %ds remaining (HP: %.1f)", player_statusfx[playerid][i][DURATION], player_health+5.0);
 				}
 				case DEBUFF_POISON: {
-					new Float:player_health;
-					GetPlayerHealth(playerid, player_health);
-					if(player_health > 0.0) SetPlayerHealth(playerid, player_health-2.0);
-					DebugPrintEx(playerid, debug_statusfx, "DEBUFF_POISON: -2HP - %ds remaining (HP: %.1f)", player_statusfx[playerid][i][DURATION], player_health-2.0);
+					if(GetPlayerState(playerid) != PLAYER_STATE_WASTED){
+						new Float:player_health;
+						GetPlayerHealth(playerid, player_health);
+						if(player_health > 0.0) SetPlayerHealth(playerid, player_health-2.0);
+						DebugPrintEx(playerid, debug_statusfx, "DEBUFF_POISON: -2HP - %ds remaining (HP: %.1f)", player_statusfx[playerid][i][DURATION], player_health-2.0);
+					}
 				}
 			}
 			//reduce duration after applying tick effect
