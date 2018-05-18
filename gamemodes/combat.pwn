@@ -25,9 +25,11 @@ combat_OnPlayerDeath(playerid, killerid, reason){
 
 // forward UpdateNametag(playerid,healthp,armorp,afk);
 UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
-	#pragma unused afk
-	new ntstring[150],tname[50], hpbar[40], arbar[40];
-	format(tname, 50, "%s (%i) {FFFF00}AFK: {FFFFFF}%i{FFFF00}s", pdata[playerid][name],playerid,pdata[playerid][afktime]);
+	new ntstring[150],tname[60], hpbar[40], arbar[40];
+	
+	if(afk==-1)format(tname, 50, "%s (%i)", pdata[playerid][name],playerid);
+	else format(tname, 50, "%s (%i) {FFFF00}AFK: {FFFFFF}%i{FFFF00}s", pdata[playerid][name],playerid,pdata[playerid][afktime]);
+	
 	if(healthp!=-1){
 		switch (healthp){
 			case 96..100: hpbar="{FF0000}";
