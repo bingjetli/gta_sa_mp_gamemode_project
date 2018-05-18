@@ -21,7 +21,7 @@ combat_OnPlayerDeath(playerid, killerid, reason){
 }
 
 
-//forward UpdateNametag(playerid,healthp,armorp,afk);
+// forward UpdateNametag(playerid,healthp,armorp,afk);
 UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
 	new ntstring[150],tname[50], hpbar[40], arbar[40];
 	format(tname, 50, "%s (%i) {FFFF00}AFK: {FFFFFF}%i{FFFF00}s", pdata[playerid][name],playerid,pdata[playerid][afktime]);
@@ -53,6 +53,7 @@ UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
 		if(healthp!=-2)SetPlayerHealth(playerid, healthp);
 	}
 	if(armorp!=-1){
+		if(armorp==-2) pdata[playerid][helmet]=1;
  		if(pdata[playerid][helmet]) switch (armorp){
 			case 96..100: arbar="{FFFFFF}\n";
             case 91..95: arbar="{FFFFFF}{808080}\n";
@@ -100,10 +101,9 @@ UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
             case 1..5: arbar="{D3D3D3}{808080}\n";
             case 0: arbar="";
 		}
-		
-		SetPlayerArmour(playerid, armorp);
+		if(armorp!=-2)SetPlayerArmour(playerid, armorp);
 	}
-	format(ntstring,150,"%s%s\n%s",tname,arbar,hpbar);
+	format(ntstring,150,"%s\n%s%s",tname,arbar,hpbar);
 	Update3DTextLabelText(pdata[playerid][nametag],GetPlayerColor(playerid),ntstring);
 }
 
