@@ -113,6 +113,7 @@ public OnPlayerSpawn(playerid){
 public OnPlayerDeath(playerid, killerid, reason){
 	world_OnPlayerDeath(playerid, killerid, reason);
 	statusfx_OnPlayerDeath(playerid, killerid, reason);
+	combat_OnPlayerDeath(playerid, killerid, reason);
    	return 1;
 }
 

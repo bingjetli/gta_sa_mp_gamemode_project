@@ -15,6 +15,12 @@ combat_OnPlayerSpawn(playerid){
 	UpdateNametag(playerid, -2);
 }
 
+combat_OnPlayerDeath(playerid, killerid, reason){
+	pdata[playerid][helmet]=0;
+	UpdateNametag(playerid, 0, 0);
+}
+
+
 //forward UpdateNametag(playerid,healthp,armorp,afk);
 UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
 	new ntstring[150],tname[50], hpbar[40], arbar[40];
@@ -69,6 +75,7 @@ UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
             case 6..10: arbar="{FFFFFF}{808080}\n";
             case 1..5: arbar="{FFFFFF}{808080}\n";
             case 0: arbar="";
+            case -2: arbar="{FFFFFF}\n";
 		}
 		else switch (armorp){
 			case 96..100: arbar="{D3D3D3}\n";
