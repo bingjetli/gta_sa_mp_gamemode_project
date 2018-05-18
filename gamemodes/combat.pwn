@@ -3,7 +3,7 @@
 combat_OnPlayerConnect(playerid){
 	pdata[playerid][nametag]=Create3DTextLabel("Namgtag Error", 0xFFFFFFFF, 0.0, 0.0, 0.0, nametag_render_distance, 0, 1);
 	Attach3DTextLabelToPlayer(pdata[playerid][nametag], playerid, 0.0, 0.0, 0.1);
-	pdata[playerid][nametagtimer]=SetTimerEx("UpdateNametag",200,true,"i",playerid);
+	pdata[playerid][nametagtimer]=SetTimerEx("UpdateNametag",200,true,"%i",playerid);
 }
 
 combat_OnPlayerDisconnect(playerid){
@@ -13,7 +13,7 @@ combat_OnPlayerDisconnect(playerid){
 
 forward UpdateNametag(playerid);
 public UpdateNametag(playerid){
-	//DebugPrintEx(-1, sdata[debug_general], "Update Nametag called for ID: %d ", playerid);
+	DebugPrintEx(-1, sdata[debug_general], "Update Nametag called for ID: %d ", playerid);
 	Update3DTextLabelText(pdata[playerid][nametag], 0xFFFFFFFF, "bigdick");
 }
 
