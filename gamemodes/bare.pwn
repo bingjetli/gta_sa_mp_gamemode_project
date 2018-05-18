@@ -26,6 +26,7 @@ new sdata[server_data_enum];
 #include "./buildings.pwn"
 #include "./commands.pwn"
 #include "./sequel.pwn"
+#include "./statusfx.pwn"
 #include "./dialogs.pwn"
 #include "./world.pwn"
 #include "./combat.pwn"
@@ -72,6 +73,7 @@ public OnPlayerConnect(playerid){
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
+	statusfx_OnPlayerConnect(playerid);
 	zones_OnPlayerConnect(playerid);
     combat_OnPlayerConnect(playerid);
     
@@ -93,7 +95,7 @@ public OnPlayerDisconnect(playerid, reason){
 	}
 
 	combat_OnPlayerDisconnect(playerid);
-	
+	statusfx_OnPlayerDisconnect(playerid);
 	
 	return 1;
 }
@@ -109,6 +111,7 @@ public OnPlayerSpawn(playerid){
 
 public OnPlayerDeath(playerid, killerid, reason){
 	world_OnPlayerDeath(playerid, killerid, reason);
+	statusfx_OnPlayerDeath(playerid, killerid, reason);
    	return 1;
 }
 
