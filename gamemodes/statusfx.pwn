@@ -85,7 +85,7 @@ stock statusfx_GivePlayerStatusFX(playerid, ENUM_STATUSFX:statusfx, duration, bo
 stock statusfx_RemovePlayerStatusFX(playerid, ENUM_STATUSFX:statusfx){
 	player_statusfx[playerid][statusfx][DURATION] = 0;
 	player_statusfx[playerid][statusfx][PERSIST] = false;
-}
+
 
 public statusfx_OnPlayerStatusFXTick(playerid){
 	for(new i; i < 2; i++){ //loop through all existing status effects

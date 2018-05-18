@@ -58,7 +58,7 @@ new sdata[server_data_enum];
 #include "./world.pwn"
 #include "./combat.pwn"
 #include "./zones.pwn"
-#include "./statusfx.pwn"
+//#include "./statusfx.pwn"
 
 #if !defined HELPER_PWN
 	#error helper.pwn is not included
