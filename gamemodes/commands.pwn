@@ -22,12 +22,12 @@ alias:bigdick("dickbig", "biggus", "dickus"); //as many as you want
 alias:gmx("exit","reset","restart");
 
 cmd:gmx(playerid, params[]){
-	sequel_Exit();
-	SetTimer("gmxxing",5000,false);
+	accounts_Exit();
+	SetTimer("gmxxing",3000,false);
 	/*
 	SendClientMessageToAll(-1,"server gmx in 5 secs!!");
 	*/
-	ClientPrint(-1, COLOR_MSG_SERVER, "Restarting server in 5 seconds...");
+	ClientPrint(-1, COLOR_MSG_SERVER, "Restarting server in 3 seconds...");
 	return 1;
 }
 
@@ -46,6 +46,18 @@ cmd:weapons(playerid, params[]){
     Dialog_Show(playerid, weaponsmenu, DIALOG_STYLE_LIST, "Weapon Menu", "9mm\nSilenced 9mm\nDesert Eagle\nShotgun\nSawn-off Shotgun\nCombat Shotgun", "Select", "Cancel");
     return 1;
 }
+
+Dialog:weaponsmenu(playerid, response, listitem, inputtext[]){
+    if (response){
+        new str[64];
+        format(str, 64, "You have selected the '%s'.", inputtext);
+
+        GivePlayerWeapon(playerid, listitem + 22, 500);
+        SendClientMessage(playerid, -1, str);
+    }
+    return 1;
+}
+
 
 //command permissions
 //https://github.com/urShadow/Pawn.CMD

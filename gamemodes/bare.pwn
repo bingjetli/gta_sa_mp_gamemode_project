@@ -24,10 +24,9 @@ new sdata[server_data_enum];
 #include "./players.pwn"
 #include "./helper.pwn"
 #include "./buildings.pwn"
+#include "./accounts.pwn"
 #include "./commands.pwn"
-#include "./sequel.pwn"
 #include "./statusfx.pwn"
-#include "./dialogs.pwn"
 #include "./world.pwn"
 #include "./combat.pwn"
 #include "./zones.pwn"
@@ -45,7 +44,7 @@ public OnGameModeInit(){
 	weapons_AssignDamage();
  	sdata[debug_general]=1;
 	sdata[player_connect_count] = 0;
-	sequel_Init();
+	accounts_OnGameModeInit();
 	buildings_OnGameModeInit();
 	world_OnGameModeInit();
 	zones_OnGameModeInit();
@@ -71,7 +70,7 @@ public OnPlayerConnect(playerid){
 	sdata[player_connect_count]++;
 	DebugPrintEx(-1, sdata[debug_general], "OnPlayerConnect was called %d times!", sdata[player_connect_count]);
 
-	sequel_QueryPlayerData(playerid);
+	accounts_OnPlayerConnect(playerid);
 	buildings_OnPlayerConnect(playerid);
 	statusfx_OnPlayerConnect(playerid);
 	zones_OnPlayerConnect(playerid);
@@ -140,3 +139,15 @@ public OnPlayerPickUpPickup(playerid, pickupid){
 	buildings_OnPlayerPickUpPickup(playerid, pickupid);
 	return 1;
 }
+
+public OnDialogPerformed(playerid, dialog[], response, success){
+    if (!strcmp(dialog, "WeaponMenu") && IsPlayerInAnyVehicle(playerid)){
+        SendClientMessage(playerid, -1, "You must be on-foot to spawn a weapon.");
+        return 0;
+    }
+    return 1;
+}
+/*for more on dialog processor:
+https://github.com/Awsomedude/easyDialog
+http://forum.sa-mp.com/showthread.php?t=475838
+*/
