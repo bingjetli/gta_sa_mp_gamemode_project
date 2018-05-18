@@ -66,7 +66,7 @@ stock statusfx_OnPlayerConnect(playerid){
 		PlayerTextDrawAlignment(playerid, textdraw_active_statusfx[playerid][i], 3);
 		PlayerTextDrawUseBox(playerid, textdraw_active_statusfx[playerid][i], 1);
 		PlayerTextDrawBoxColor(playerid, textdraw_active_statusfx[playerid][i], 0x00000066);
-		PlayerTextDrawTextSize(playerid, textdraw_active_statusfx[playerid][i], 600.0, 5.0);
+		PlayerTextDrawTextSize(playerid, textdraw_active_statusfx[playerid][i], -300.0, 5.0);
 		PlayerTextDrawShow(playerid, textdraw_active_statusfx[playerid][i]);
 	}
 	return 1;
