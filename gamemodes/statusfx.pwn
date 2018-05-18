@@ -88,13 +88,13 @@ public statusfx_OnPlayerStatusFXTick(playerid){
 			//apply status effect tick
 			switch(i){
 				case BUFF_HP_REGEN: {
-					static Float:player_health;
+					new Float:player_health;
 					GetPlayerHealth(playerid, player_health);
 					if(player_health < 100.0) SetPlayerHealth(playerid, player_health+5.0);
 					DebugPrintEx(playerid, debug_statusfx, "BUFF_HP_REGEN: +5HP - %ds remaining (HP: %.1f)", player_statusfx[playerid][i][DURATION], player_health+5.0);
 				}
 				case DEBUFF_POISON: {
-					static Float:player_health;
+					new Float:player_health;
 					GetPlayerHealth(playerid, player_health);
 					if(player_health > 0.0) SetPlayerHealth(playerid, player_health-2.0);
 					DebugPrintEx(playerid, debug_statusfx, "DEBUFF_POISON: -2HP - %ds remaining (HP: %.1f)", player_statusfx[playerid][i][DURATION], player_health-2.0);
