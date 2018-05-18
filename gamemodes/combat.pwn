@@ -16,6 +16,8 @@ combat_OnPlayerSpawn(playerid){
 }
 
 combat_OnPlayerDeath(playerid, killerid, reason){
+	#pragma unused killerid
+	#pragma unused reason
 	pdata[playerid][helmet]=0;
 	UpdateNametag(playerid, 0, 0);
 }
@@ -23,6 +25,7 @@ combat_OnPlayerDeath(playerid, killerid, reason){
 
 // forward UpdateNametag(playerid,healthp,armorp,afk);
 UpdateNametag(playerid,healthp=-1,armorp=-1,afk=-1){
+	#pragma unused afk
 	new ntstring[150],tname[50], hpbar[40], arbar[40];
 	format(tname, 50, "%s (%i) {FFFF00}AFK: {FFFFFF}%i{FFFF00}s", pdata[playerid][name],playerid,pdata[playerid][afktime]);
 	if(healthp!=-1){
