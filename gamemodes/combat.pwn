@@ -11,10 +11,13 @@ combat_OnPlayerDisconnect(playerid){
 	KillTimer(pdata[playerid][nametagtimer]);
 }
 
-forward UpdateNametag(playerid);
-public UpdateNametag(playerid){
+forward UpdateNametag(playerid,healthp,armorp,afk);
+public UpdateNametag(playerid,healthp,armorp,afk){
+
 	//DebugPrintEx(-1, sdata[debug_general], "Update Nametag called for ID: %d ", playerid);
-	Update3DTextLabelText(pdata[playerid][nametag], 0xFFFFFFFF, "bigdick");
+	Update3DTextLabelText(pdata[playerid][nametag], 0xFFFFFFFF, "lllll\nIIIII\n\n|||||");
+
+
 }
 
 
