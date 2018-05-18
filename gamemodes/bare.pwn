@@ -58,7 +58,7 @@ new sdata[server_data_enum];
 #include "./world.pwn"
 #include "./combat.pwn"
 #include "./zones.pwn"
-#include "./statusfx.pwn"
+//#include "./statusfx.pwn"
 
 #if !defined HELPER_PWN
 	#error helper.pwn is not included
@@ -84,9 +84,11 @@ new sdata[server_data_enum];
 #if !defined ZONES_PWN
 	#error zones.pwn is not included
 #endif
+/*
 #if !defined STATUSFX_PWN
 	#error statusfx.pwn is not included
 #endif
+*/
 //#include "./.pwn"
 //#include "./.pwn"
 //#include "./.pwn"
@@ -129,7 +131,7 @@ public OnPlayerConnect(playerid){
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
-	statusfx_OnPlayerConnect(playerid);
+//	statusfx_OnPlayerConnect(playerid);
 	zones_OnPlayerConnect(playerid);
     combat_OnPlayerConnect(playerid);
     
@@ -151,7 +153,7 @@ public OnPlayerDisconnect(playerid, reason){
 	}
 
 	combat_OnPlayerDisconnect(playerid);
-	statusfx_OnPlayerDisconnect(playerid);
+//	statusfx_OnPlayerDisconnect(playerid);
 	
 	return 1;
 }
@@ -166,7 +168,7 @@ public OnPlayerSpawn(playerid){
 }
 
 public OnPlayerDeath(playerid, killerid, reason){
-	statusfx_OnPlayerDeath(playerid, killerid, reason);
+//	statusfx_OnPlayerDeath(playerid, killerid, reason);
 	world_OnPlayerDeath(playerid, killerid, reason);
    	return 1;
 }

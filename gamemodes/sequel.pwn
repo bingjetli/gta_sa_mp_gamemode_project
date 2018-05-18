@@ -17,7 +17,7 @@ new MySQL:database;
 */
 static const debug_sql = 0; 
 
-stock sequel_Init(){
+sequel_Init(){
 	mysql_log(ALL);
     new MySQLOpt:option_id = mysql_init_options();
     mysql_set_option(option_id, AUTO_RECONNECT, true);
