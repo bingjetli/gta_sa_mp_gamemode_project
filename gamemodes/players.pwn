@@ -10,7 +10,7 @@ enum player_data_enum{
 	bool:shadowbanned,          //db
 	cash,                       //db
 	bankmoney,                  //db
-	health,                     //db
+	health,               //db
 	armor,                      //db
 	timezone,                   //db
 	ip[16],                     //db
