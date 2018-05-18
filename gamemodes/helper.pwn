@@ -22,10 +22,6 @@
 *
 * helpful links: http://forum.sa-mp.com/showthread.php?t=570933 
 */
-#if defined HELPER_PWN
-	#endinput
-#endif
-#define HELPER_PWN
 
 #define COLOR_MSG_NETWORK 0xA9C4E4AA
 #define COLOR_MSG_DEBUG 0x5a8f99ff

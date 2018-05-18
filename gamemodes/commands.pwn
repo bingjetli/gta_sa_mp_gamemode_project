@@ -1,7 +1,3 @@
-#if defined COMMANDS_PWN
-	#endinput
-#endif
-#define COMMANDS_PWN
 /*
 cmd:bigdick(playerid, params[]){
 	SendClientMessageToAll(0xFFFFFF,"bigdick");

@@ -1,8 +1,3 @@
-#if defined COMBAT_PWN
-	#endinput
-#endif
-#define COMBAT_PWN
-
 #define nametag_render_distance 25.0
 
 combat_OnPlayerConnect(playerid){

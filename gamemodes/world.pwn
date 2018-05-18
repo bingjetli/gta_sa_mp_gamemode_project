@@ -14,11 +14,6 @@
 *	24 minute gameday
 * weather changes randomly and can last for up to 24 game hours
 */
-#if defined WORLD_PWN
-	#endinput
-#endif
-#define WORLD_PWN
-
 #define WORLD_TICK_RATE 30000 //ms
 #define WORLD_MINUTE 1 //seconds
 #define WORLD_HOUR 60 //seconds
