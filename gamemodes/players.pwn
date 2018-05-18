@@ -20,7 +20,8 @@ enum player_data_enum{
 	Cache:player_cache,
 	Text3D:nametag,
 	afktimer,
-	afktime
+	afktime,
+	helmet
 };
 
 new pdata[MAX_PLAYERS][player_data_enum];
