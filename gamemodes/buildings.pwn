@@ -27,6 +27,11 @@
 * 	caching all possible pickupids to link to buildings array
 * 	size 4096 (max pickups)
 */
+#if defined BUILDINGS_PWN
+	#endinput
+#endif
+#define BUILDINGS_PWN
+
 #define MAX_BUILDINGS 100
 #define MAX_CACHED_PICKUPS 4096
 #define ENEX_MARKER_MODEL_ID 19606

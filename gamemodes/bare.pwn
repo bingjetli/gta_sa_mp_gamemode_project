@@ -19,17 +19,74 @@ enum server_data_enum{
 	player_connect_count,
 	debug_general
 };
+enum player_data_enum{
+	db_id,                      //db
+	name[25],                   //db
+	pwhash[65],                 //db
+	pwsalt[11],                 //db
+	pwfails,
+	kills,                      //db
+	deaths,                     //db
+	bool:loggedin,
+	bool:shadowbanned,          //db
+	cash,                       //db
+	bankmoney,                  //db
+	health,                     //db
+	armor,                      //db
+	timezone,                   //db
+	ip[16],                     //db
+	autologin,                  //db
+	adminlevel,                 //db
+	corrupt_check,
+	Cache:player_cache,
+	Text3D:nametag,
+	nametagtimer,
+	afktime
+};
+
+new pdata[MAX_PLAYERS][player_data_enum];
 new sdata[server_data_enum];
 //========================================|
+/*
 #include "./players.pwn"
+*/
 #include "./helper.pwn"
+#include "./sequel.pwn"
 #include "./buildings.pwn"
 #include "./commands.pwn"
-#include "./sequel.pwn"
 #include "./dialogs.pwn"
 #include "./world.pwn"
 #include "./combat.pwn"
 #include "./zones.pwn"
+#include "./statusfx.pwn"
+
+#if !defined HELPER_PWN
+	#error helper.pwn is not included
+#endif
+#if !defined BUILDINGS_PWN
+	#error buildings.pwn is not included
+#endif
+#if !defined COMMANDS_PWN
+	#error commands.pwn is not included
+#endif
+#if !defined SEQUEL_PWN
+	#error sequel.pwn is not included
+#endif
+#if !defined DIALOGS_PWN
+	#error dialogs.pwn is not included
+#endif
+#if !defined WORLD_PWN
+	#error world.pwn is not included
+#endif
+#if !defined COMBAT_PWN
+	#error combat.pwn is not included
+#endif
+#if !defined ZONES_PWN
+	#error zones.pwn is not included
+#endif
+#if !defined STATUSFX_PWN
+	#error statusfx.pwn is not included
+#endif
 //#include "./.pwn"
 //#include "./.pwn"
 //#include "./.pwn"
@@ -72,6 +129,7 @@ public OnPlayerConnect(playerid){
 
 	sequel_QueryPlayerData(playerid);
 	buildings_OnPlayerConnect(playerid);
+	statusfx_OnPlayerConnect(playerid);
 	zones_OnPlayerConnect(playerid);
     combat_OnPlayerConnect(playerid);
     
@@ -93,7 +151,7 @@ public OnPlayerDisconnect(playerid, reason){
 	}
 
 	combat_OnPlayerDisconnect(playerid);
-	
+	statusfx_OnPlayerDisconnect(playerid);
 	
 	return 1;
 }
@@ -108,6 +166,7 @@ public OnPlayerSpawn(playerid){
 }
 
 public OnPlayerDeath(playerid, killerid, reason){
+	statusfx_OnPlayerDeath(playerid, killerid, reason);
 	world_OnPlayerDeath(playerid, killerid, reason);
    	return 1;
 }

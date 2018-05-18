@@ -1,3 +1,7 @@
+#if defined DIALOGS_PWN
+	#endinput
+#endif
+#define DIALOGS_PWN
 Dialog:weaponsmenu(playerid, response, listitem, inputtext[]){
     if (response){
         new str[64];

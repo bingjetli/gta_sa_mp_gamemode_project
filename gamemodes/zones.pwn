@@ -15,6 +15,10 @@
 #pragma library samp
 #include <a_samp>
 */
+#if defined ZONES_PWN
+	#endinput
+#endif
+#define ZONES_PWN
  
 #define MAX_ZONE_NAME 28
  
