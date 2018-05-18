@@ -29,11 +29,14 @@
 *
 * timer_statusfx[MAX_PLAYERS]
 *
-* functions:
-*	giveplayerbuff(playerid, Buff:buff, duration, bool:persist)
-*		- persist determines whether or not the buff persists after death/disconnect
-*	giveplayerdebuff(playerid, Debuff:debuff, duration, bool:persist)
+* statusfx_hud:
+*	maximum 10 visible at any given time
+*	10 player textdraws
+*	fifo model, queue
+*
 */
+#define MAX_VISIBLE_STATUSFX 10
+
 enum ENUM_STATUSFX {
 	BUFF_HP_REGEN,
 	DEBUFF_POISON,
@@ -48,11 +51,20 @@ enum ENUM_STATUSFX_DATA {
 static player_statusfx[MAX_PLAYERS][ENUM_STATUSFX][ENUM_STATUSFX_DATA];
 static timer_statusfx[MAX_PLAYERS];
 static debug_statusfx = 1;
+static PlayerText:textdraw_active_statusfx[MAX_PLAYERS][MAX_VISIBLE_STATUSFX];
 
 forward statusfx_OnPlayerStatusFXTick(playerid);
 
 stock statusfx_OnPlayerConnect(playerid){
 	timer_statusfx[playerid] = SetTimerEx("statusfx_OnPlayerStatusFXTick", 1000, true, "i", playerid);
+	for(new i; i < MAX_VISIBLE_STATUSFX; i++){
+		textdraw_active_statusfx[playerid][i] = CreatePlayerTextDraw(playerid, 625.0, 425.0 - (i*10.0), "statusfx - 99s");
+		PlayerTextDrawFont(playerid, textdraw_active_statusfx[playerid][i], 3);
+		PlayerTextDrawSetShadow(playerid, textdraw_active_statusfx[playerid][i], 0);
+		PlayerTextDrawSetOutline(playerid, textdraw_active_statusfx[playerid][i], 1);
+		PlayerTextDrawLetterSize(playerid, textdraw_active_statusfx[playerid][i], 0.3, 1.5);
+		PlayerTextDrawShow(playerid, textdraw_active_statusfx[playerid][i]);
+	}
 	return 1;
 }
 

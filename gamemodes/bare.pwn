@@ -101,6 +101,7 @@ public OnPlayerDisconnect(playerid, reason){
 }
 
 public OnPlayerSpawn(playerid){
+	//combat_OnPlayerSpawn(playerid);
 	world_OnPlayerSpawn(playerid);
 	SetPlayerPos(playerid, -1753.7196, 884.7693, 295.8750);
 	SetPlayerFacingAngle(playerid, 6.6817);
