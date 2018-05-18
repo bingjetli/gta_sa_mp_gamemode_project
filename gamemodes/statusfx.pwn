@@ -58,7 +58,7 @@ forward statusfx_OnPlayerStatusFXTick(playerid);
 stock statusfx_OnPlayerConnect(playerid){
 	timer_statusfx[playerid] = SetTimerEx("statusfx_OnPlayerStatusFXTick", 1000, true, "i", playerid);
 	for(new i; i < MAX_VISIBLE_STATUSFX; i++){
-		textdraw_active_statusfx[playerid][i] = CreatePlayerTextDraw(playerid, 525.0, 425.0 - (i*20.0), "statusfx    :99s");
+		textdraw_active_statusfx[playerid][i] = CreatePlayerTextDraw(playerid, 530.0, 425.0 - (i*20.0), "statusfx    :99s");
 		PlayerTextDrawFont(playerid, textdraw_active_statusfx[playerid][i], 1);
 		PlayerTextDrawSetShadow(playerid, textdraw_active_statusfx[playerid][i], 0);
 		PlayerTextDrawSetOutline(playerid, textdraw_active_statusfx[playerid][i], 1);
