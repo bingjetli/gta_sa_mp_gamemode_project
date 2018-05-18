@@ -63,7 +63,7 @@ stock statusfx_OnPlayerConnect(playerid){
 		PlayerTextDrawSetShadow(playerid, textdraw_active_statusfx[playerid][i], 0);
 		PlayerTextDrawSetOutline(playerid, textdraw_active_statusfx[playerid][i], 1);
 		PlayerTextDrawLetterSize(playerid, textdraw_active_statusfx[playerid][i], 0.3, 1.5);
-		PlayerTextDrawTextSize(playerid, textdraw_active_statusfx[playerid][i], 630.0, 1.0);
+		PlayerTextDrawTextSize(playerid, textdraw_active_statusfx[playerid][i], 630.0, 5.0);
 		PlayerTextDrawAlignment(playerid, textdraw_active_statusfx[playerid][i], 0);
 		PlayerTextDrawUseBox(playerid, textdraw_active_statusfx[playerid][i], 1);
 		PlayerTextDrawBoxColor(playerid, textdraw_active_statusfx[playerid][i], 0x00000066);
