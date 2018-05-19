@@ -155,14 +155,14 @@ public statusfx_OnPlayerStatusFXTick(playerid){
 					}
 				}
 				player_statusfx[playerid][i][QUEUE_POSITION] = -1;
-				player_active_statusfx[playerid]++;
+				player_active_statusfx[playerid]--;
 			}
 		}
 		if(player_statusfx[playerid][i][QUEUE_POSITION] >= 0 && player_statusfx[playerid][i][QUEUE_POSITION] < MAX_VISIBLE_STATUSFX){
 			new string[17];
-			format(string, sizeof(string), "%12s:%ds", statusfx_names[i], player_statusfx[playerid][i][DURATION]);
+			format(string, sizeof(string), "%12s:%d", statusfx_names[i], player_statusfx[playerid][i][DURATION]);
 			PlayerTextDrawSetString(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]], string);
-			if(player_statusfx[playerid][i][QUEUE_POSITION] > player_active_statusfx[playerid]){
+			if(player_statusfx[playerid][i][QUEUE_POSITION] >= player_active_statusfx[playerid]){
 				PlayerTextDrawHide(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]]);
 			} else {
 				PlayerTextDrawShow(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]]);
