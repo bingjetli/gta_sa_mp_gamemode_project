@@ -46,6 +46,7 @@ public OnGameModeInit(){
 	sdata[player_connect_count] = 0;
 	accounts_OnGameModeInit();
 	buildings_OnGameModeInit();
+	statusfx_OnGameModeInit();
 	world_OnGameModeInit();
 	zones_OnGameModeInit();
     

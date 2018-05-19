@@ -45,15 +45,30 @@ enum ENUM_STATUSFX {
 
 enum ENUM_STATUSFX_DATA {
 	DURATION,
-	bool:PERSIST
+	bool:PERSIST,
+	QUEUE_POSITION
 };
 
 static player_statusfx[MAX_PLAYERS][ENUM_STATUSFX][ENUM_STATUSFX_DATA];
 static timer_statusfx[MAX_PLAYERS];
 static debug_statusfx = 1;
 static PlayerText:textdraw_active_statusfx[MAX_PLAYERS][MAX_VISIBLE_STATUSFX];
+static player_active_statusfx[MAX_PLAYERS];
+static statusfx_names[ENUM_STATUSFX][12] = {
+	"HP Regen",
+	"Poison",
+	"Invalid"
+};
 
 forward statusfx_OnPlayerStatusFXTick(playerid);
+
+stock statusfx_OnGameModeInit(){
+	for(new i; i < MAX_PLAYERS; i++){
+		for(new ENUM_STATUSFX:j; j < ENUM_MAX_STATUSFX; j++){
+			player_statusfx[i][j][QUEUE_POSITION] = -1;
+		}
+	}
+}
 
 stock statusfx_OnPlayerConnect(playerid){
 	timer_statusfx[playerid] = SetTimerEx("statusfx_OnPlayerStatusFXTick", 1000, true, "i", playerid);
@@ -76,6 +91,9 @@ stock statusfx_OnPlayerDisconnect(playerid){
 	KillTimer(timer_statusfx[playerid]);
 	for(new i; i < MAX_VISIBLE_STATUSFX; i++){
 		PlayerTextDrawDestroy(playerid, textdraw_active_statusfx[playerid][i]);
+	}
+	for(new ENUM_STATUSFX:j; j < ENUM_MAX_STATUSFX; j++){
+		player_statusfx[playerid][j][QUEUE_POSITION] = -1;
 	}
 	return 1;
 }
@@ -124,6 +142,31 @@ public statusfx_OnPlayerStatusFXTick(playerid){
 				}
 			}
 			//do textdraw queue calculations
+			if(player_statusfx[playerid][i][QUEUE_POSITION] == -1){
+				player_statusfx[playerid][i][QUEUE_POSITION] = player_active_statusfx[playerid];
+				player_active_statusfx[playerid]++;
+			}
+		}
+		else{
+			if(player_statusfx[playerid][i][QUEUE_POSITION] != -1){
+				for(new ENUM_STATUSFX:j; j < ENUM_MAX_STATUSFX; j++){
+					if(player_statusfx[playerid][j][QUEUE_POSITION] > player_statusfx[playerid][i][QUEUE_POSITION] && player_statusfx[playerid][j][QUEUE_POSITION] < player_active_statusfx[playerid]){
+						player_statusfx[playerid][j][QUEUE_POSITION]--;
+					}
+				}
+				player_statusfx[playerid][i][QUEUE_POSITION] = -1;
+				player_active_statusfx[playerid]++;
+			}
+		}
+		if(player_statusfx[playerid][i][QUEUE_POSITION] >= 0 && player_statusfx[playerid][i][QUEUE_POSITION] < MAX_VISIBLE_STATUSFX){
+			new string[17];
+			format(string, sizeof(string), "%12s:%ds", statusfx_names[i], player_statusfx[playerid][i][DURATION]);
+			PlayerTextDrawSetString(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]], string);
+			if(player_statusfx[playerid][i][QUEUE_POSITION] < player_active_statusfx[playerid]){
+				PlayerTextDrawHide(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]]);
+			} else {
+				PlayerTextDrawShow(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]]);
+			}
 		}
 	}
 	//update textdraw_active_statusfx
