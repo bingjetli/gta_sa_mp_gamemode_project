@@ -51,7 +51,7 @@ enum ENUM_STATUSFX_DATA {
 
 static player_statusfx[MAX_PLAYERS][ENUM_STATUSFX][ENUM_STATUSFX_DATA];
 static timer_statusfx[MAX_PLAYERS];
-static debug_statusfx = 1;
+static debug_statusfx = 0;
 static PlayerText:textdraw_active_statusfx[MAX_PLAYERS][MAX_VISIBLE_STATUSFX];
 static player_active_statusfx[MAX_PLAYERS];
 static statusfx_names[ENUM_STATUSFX][12] = {
