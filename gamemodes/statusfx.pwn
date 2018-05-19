@@ -162,12 +162,18 @@ public statusfx_OnPlayerStatusFXTick(playerid){
 			new string[17];
 			format(string, sizeof(string), "%12s:%d", statusfx_names[i], player_statusfx[playerid][i][DURATION]);
 			PlayerTextDrawSetString(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]], string);
+			PlayerTextDrawShow(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]]);
+			/*
 			if(player_statusfx[playerid][i][QUEUE_POSITION] >= player_active_statusfx[playerid]){
 				PlayerTextDrawHide(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]]);
 			} else {
 				PlayerTextDrawShow(playerid, textdraw_active_statusfx[playerid][player_statusfx[playerid][i][QUEUE_POSITION]]);
 			}
+			*/
 		}
+	}
+	for(new i = player_active_statusfx[playerid]; i < MAX_VISIBLE_STATUSFX; i++){
+		PlayerTextDrawHide(playerid, textdraw_active_statusfx[playerid][i]);
 	}
 	//update textdraw_active_statusfx
 }
