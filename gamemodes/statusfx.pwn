@@ -61,7 +61,7 @@ stock statusfx_OnPlayerConnect(playerid){
 		textdraw_active_statusfx[playerid][i] = CreatePlayerTextDraw(playerid, 545.0, 425.0 - (i*20.0), "statusfx    :99s");
 		PlayerTextDrawFont(playerid, textdraw_active_statusfx[playerid][i], 1);
 		PlayerTextDrawSetShadow(playerid, textdraw_active_statusfx[playerid][i], 0);
-		PlayerTextDrawSetOutline(playerid, textdraw_active_statusfx[playerid][i], 1);
+		PlayerTextDrawSetOutline(playerid, textdraw_active_statusfx[playerid][i], 0);
 		PlayerTextDrawLetterSize(playerid, textdraw_active_statusfx[playerid][i], 0.3, 1.5);
 		PlayerTextDrawTextSize(playerid, textdraw_active_statusfx[playerid][i], 630.0, 5.0);
 		PlayerTextDrawAlignment(playerid, textdraw_active_statusfx[playerid][i], 0);
@@ -74,6 +74,9 @@ stock statusfx_OnPlayerConnect(playerid){
 
 stock statusfx_OnPlayerDisconnect(playerid){
 	KillTimer(timer_statusfx[playerid]);
+	for(new i; i < MAX_VISIBLE_STATUSFX; i++){
+		PlayerTextDrawDestroy(playerid, textdraw_active_statusfx[playerid][i]);
+	}
 	return 1;
 }
 
@@ -101,6 +104,8 @@ stock statusfx_RemovePlayerStatusFX(playerid, ENUM_STATUSFX:statusfx){
 public statusfx_OnPlayerStatusFXTick(playerid){
 	for(new ENUM_STATUSFX:i; i < ENUM_MAX_STATUSFX; i++){ //loop through all existing status effects
 		if(player_statusfx[playerid][i][DURATION] > 0){ //if the status effect has a duration greater than 0
+			//reduce duration before applying tick effect
+			player_statusfx[playerid][i][DURATION]--;
 			//apply status effect tick
 			switch(i){
 				case BUFF_HP_REGEN: {
@@ -118,10 +123,10 @@ public statusfx_OnPlayerStatusFXTick(playerid){
 					}
 				}
 			}
-			//reduce duration after applying tick effect
-			player_statusfx[playerid][i][DURATION]--;
+			//do textdraw queue calculations
 		}
 	}
+	//update textdraw_active_statusfx
 }
 
 cmd:hpregen(playerid, params[]){
