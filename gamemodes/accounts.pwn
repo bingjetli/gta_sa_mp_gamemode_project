@@ -87,13 +87,13 @@ public OnPlayerDataCheck(playerid, corrupt_checker){
 		pdata[playerid][player_cache] = cache_save();
 
 		format(String, sizeof(String), "\n{FFFFFF}Welcome back, %s.\n\n{0099FF}This name is already registered.\n\
-		{0099FF}Please login below, or proceed by changing to a different name.\n\n", pdata[playerid][name]);
-		Dialog_Show(playerid, login_dialog, DIALOG_STYLE_PASSWORD, "Accounts System", String, "Login", "Change");
+		{0099FF}Please login below, OR\nProceed by changing to a different name.\n\n", pdata[playerid][name]);
+		Dialog_Show(playerid, login_dialog, DIALOG_STYLE_PASSWORD, "Accounts System------------------------>>", String, "Login", "Change");
 	}
 	else {
-		format(String, sizeof(String), "{FFFFFF}Welcome %s.\n\n{0099FF}This account is not registered.\n\
+		format(String, sizeof(String), "{FFFFFF}Welcome %s.\n\n{0099FF}This name has not been registered.\n\
 		{0099FF}Please input a password to register, or play as a guest.\n\n", pdata[playerid][name]);
-		Dialog_Show(playerid, register_dialog, DIALOG_STYLE_PASSWORD, "Accounts System", String, "Register", "Guest");
+		Dialog_Show(playerid, register_dialog, DIALOG_STYLE_PASSWORD, "Accounts System------------------------>>", String, "Register", "Guest");
 	}
 	return 1;
 }
@@ -110,7 +110,7 @@ public OnPlayerRegister(playerid){
 
 
 Dialog:login_dialog(playerid, response, listitem, inputtext[]){
-	if(!response) return Dialog_Show(playerid, changenamedialog, DIALOG_STYLE_INPUT, "Accounts System", "Please input your new name.", "Change", "Close");
+	if(!response) return Dialog_Show(playerid, changenamedialog, DIALOG_STYLE_INPUT, "Accounts System------------------------>>", "Please input your new name.", "Change", "");
 	new saltedhash[65];
 	SHA256_PassHash(inputtext, pdata[playerid][pwsalt], saltedhash, 65);
 
@@ -166,7 +166,7 @@ Dialog:login_dialog(playerid, response, listitem, inputtext[]){
 
 		format(String, sizeof(String), "\n{FFFFFF}Welcome back, %s.\n\n{0099FF}This name is already registered.\n\
 		{0099FF}Please login below, or proceed by changing to a different name.\n\n", pdata[playerid][name]);
-		Dialog_Show(playerid, login_dialog, DIALOG_STYLE_PASSWORD, "Accounts System", String, "Login", "Change");
+		Dialog_Show(playerid, login_dialog, DIALOG_STYLE_PASSWORD, "Accounts System------------------------>>", String, "Login", "Change");
 	}
 	return 1;
 }
@@ -194,7 +194,7 @@ Dialog:register_dialog(playerid, response, listitem, inputtext[]){
 
 		format(String, sizeof(String), "{FFFFFF}Welcome %s.\n\n{0099FF}This account is not registered.\n\
 		{0099FF}Please input a password to register, or play as a guest.\n\n", pdata[playerid][name]);
-		Dialog_Show(playerid, register_dialog, DIALOG_STYLE_PASSWORD, "Accounts System", String, "Register", "Guest");
+		Dialog_Show(playerid, register_dialog, DIALOG_STYLE_PASSWORD, "Accounts System------------------------>>", String, "Register", "Guest");
 		return 1;
 	}
 	for (new i = 0; i < 10; i++){
